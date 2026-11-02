@@ -1,0 +1,163 @@
+# ============================================================================
+# probe_hdmi_ip.tcl —— HDMI 输出通路的"先遣探针"（不碰主工程）
+#
+# 目的（2026-09-30）：
+#   1) 验证 Digilent IP（rgb2dvi v1.4 / axi_dynclk v1.2）能被 Vivado 2023.2 加载
+#   2) 把 6 个 IP 的**真实引脚名**打印出来（不许猜 —— 猜错白跑 40 分钟综合）
+#   3) ★在 scratch 工程里把**整条 HDMI 链路连起来 + validate**，提前暴露接线错误
+#   4) 生成 wrapper，把**顶层端口名**打出来（XDC 约束要用真名）
+#
+# ★ 为什么这版比第一版狠：第一版只建单元，结果暴露了
+#   "Could not find bus definition for the interface: TMDS"（缺 if/tmds_v1_0），
+#   还有一堆 CE/reset 输入脚既没连也看不出默认值 —— 这类脚悬空被 tie 到 0
+#   就是"看着全对、其实全不动"。所以这版**显式驱动每一个输入脚**并跑校验。
+#
+# 用法：
+#   F:/Xilinx2022/Vivado/2023.2/bin/vivado.bat -mode batch -source probe_hdmi_ip.tcl
+# ============================================================================
+
+set here  [file dirname [file normalize [info script]]]
+set ipdir $here/ip_repo
+set pdir  $here/probe_hdmi
+file delete -force $pdir
+file mkdir $pdir
+
+puts "=== 1) 建 scratch 工程 ==="
+create_project probe_hdmi $pdir -part xc7z020clg400-1 -force
+catch { set_property board_part tul.com.tw:pynq-z2:part0:1.0 [current_project] }
+
+puts "=== 2) 挂 IP 仓库（Digilent 布局：repo/ip + repo/if）==="
+puts "    ip_repo_paths = $ipdir"
+set_property ip_repo_paths [list $ipdir] [current_project]
+update_ip_catalog -rebuild
+foreach pat {*rgb2dvi* *axi_dynclk* *v_tc* *v_axi4s_vid_out* *axi_vdma* *axi_gpio*} {
+    puts "    $pat -> [get_ipdefs -all $pat]"
+}
+if {[llength [get_ipdefs -all *rgb2dvi*]] == 0 || [llength [get_ipdefs -all *axi_dynclk*]] == 0} {
+    puts "ERROR: Digilent IP 没认出来"; exit 1
+}
+
+puts "=== 3) 建 BD 与 6 个单元 ==="
+create_bd_design probe
+current_bd_design probe
+
+proc try_cell {name vlnv configs} {
+    if {[catch {
+        create_bd_cell -type ip -vlnv $vlnv $name
+        if {[llength $configs]} { set_property -dict $configs [get_bd_cells $name] }
+    } err]} { puts "ERROR: 建 $name 失败: $err"; return 0 }
+    return 1
+}
+set ok 1
+set ok [expr {$ok && [try_cell axi_vdma_out xilinx.com:ip:axi_vdma:6.3 [list \
+    CONFIG.c_include_mm2s {1} CONFIG.c_include_s2mm {0} CONFIG.c_include_mm2s_dre {0} \
+    CONFIG.c_m_axi_mm2s_data_width {32} CONFIG.c_m_axis_mm2s_tdata_width {32} \
+    CONFIG.c_num_fstores {4} CONFIG.c_mm2s_linebuffer_depth {1024} \
+    CONFIG.c_mm2s_max_burst_length {32} ]]}]
+set ok [expr {$ok && [try_cell v_axi4s_vid_out_0 xilinx.com:ip:v_axi4s_vid_out:4.0 [list \
+    CONFIG.C_ADDR_WIDTH {11} CONFIG.C_HAS_ASYNC_CLK {1} \
+    CONFIG.C_HYSTERESIS_LEVEL {1024} CONFIG.C_VTG_MASTER_SLAVE {1} ]]}]
+set ok [expr {$ok && [try_cell vtc_out xilinx.com:ip:v_tc:6.2 [list \
+    CONFIG.enable_detection {false} ]]}]
+# ★ kClkRange 不写：kGenerateSerialClk=false 时它是**禁用参数**，
+#   写了只会得到一条 "modify the value of disabled parameter" 警告（实测）。
+set ok [expr {$ok && [try_cell axi_dynclk digilentinc.com:ip:axi_dynclk:1.2 [list ]]}]
+set ok [expr {$ok && [try_cell rgb2dvi_0 digilentinc.com:ip:rgb2dvi:1.4 [list \
+    CONFIG.kGenerateSerialClk {false} CONFIG.kRstActiveHigh {false} ]]}]
+set ok [expr {$ok && [try_cell hdmi_out_hpd_video xilinx.com:ip:axi_gpio:2.0 [list \
+    CONFIG.C_ALL_OUTPUTS {1} CONFIG.C_GPIO_WIDTH {1} CONFIG.C_INTERRUPT_PRESENT {0} ]]}]
+if {!$ok} { puts "ERROR: 有单元没建出来"; exit 1 }
+puts "    6 个单元全部建出 ✓"
+
+puts "=== 4) 顶层端口 + 常量 ==="
+create_bd_port -dir I -type clk -freq_hz 100000000 clk_100M
+create_bd_port -dir O hdmi_out_hpd
+create_bd_intf_port -mode Master -vlnv digilentinc.com:interface:tmds_rtl:1.0 TMDS_out
+create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconst_ce
+set_property -dict [list CONFIG.CONST_WIDTH {1} CONFIG.CONST_VAL {1}] [get_bd_cells xlconst_ce]
+create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconst_ce2
+set_property -dict [list CONFIG.CONST_WIDTH {1} CONFIG.CONST_VAL {1}] [get_bd_cells xlconst_ce2]
+create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconst_zero
+set_property -dict [list CONFIG.CONST_WIDTH {1} CONFIG.CONST_VAL {0}] [get_bd_cells xlconst_zero]
+create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconst_rstn
+set_property -dict [list CONFIG.CONST_WIDTH {1} CONFIG.CONST_VAL {1}] [get_bd_cells xlconst_rstn]
+
+puts "=== 5) 接口连接 ==="
+connect_bd_intf_net [get_bd_intf_pins axi_vdma_out/M_AXIS_MM2S]    [get_bd_intf_pins v_axi4s_vid_out_0/video_in]
+connect_bd_intf_net [get_bd_intf_pins vtc_out/vtiming_out]         [get_bd_intf_pins v_axi4s_vid_out_0/vtiming_in]
+connect_bd_intf_net [get_bd_intf_pins v_axi4s_vid_out_0/vid_io_out] [get_bd_intf_pins rgb2dvi_0/RGB]
+connect_bd_intf_net [get_bd_intf_pins rgb2dvi_0/TMDS]              [get_bd_intf_pins TMDS_out]
+
+puts "=== 6) 时钟连接（100M 参考 + dynclk 产出的像素钟）==="
+connect_bd_net [get_bd_pins clk_100M] \
+    [get_bd_pins axi_vdma_out/m_axi_mm2s_aclk] \
+    [get_bd_pins axi_vdma_out/m_axis_mm2s_aclk] \
+    [get_bd_pins axi_vdma_out/s_axi_lite_aclk] \
+    [get_bd_pins v_axi4s_vid_out_0/aclk] \
+    [get_bd_pins vtc_out/s_axi_aclk] \
+    [get_bd_pins axi_dynclk/REF_CLK_I] \
+    [get_bd_pins axi_dynclk/s_axi_lite_aclk] \
+    [get_bd_pins hdmi_out_hpd_video/s_axi_aclk]
+connect_bd_net [get_bd_pins axi_dynclk/PXL_CLK_O] \
+    [get_bd_pins rgb2dvi_0/PixelClk] \
+    [get_bd_pins v_axi4s_vid_out_0/vid_io_out_clk] \
+    [get_bd_pins vtc_out/clk]
+# ★ 像素钟同时进 rgb2dvi/PixelClk、vid_out/vid_io_out_clk、vtc_out/clk
+#   —— 与 PYNQ base.tcl 完全一致（时序发生器必须跟视频输出同一个钟）。
+connect_bd_net [get_bd_pins axi_dynclk/PXL_CLK_5X_O] [get_bd_pins rgb2dvi_0/SerialClk]
+connect_bd_net [get_bd_pins axi_dynclk/LOCKED_O]      [get_bd_pins rgb2dvi_0/aRst_n]
+
+puts "=== 7) 复位/使能（显式驱动每个输入脚，不许悬空）==="
+connect_bd_net [get_bd_pins xlconst_rstn/dout] \
+    [get_bd_pins axi_vdma_out/axi_resetn] \
+    [get_bd_pins v_axi4s_vid_out_0/aresetn] \
+    [get_bd_pins vtc_out/resetn] \
+    [get_bd_pins vtc_out/s_axi_aresetn] \
+    [get_bd_pins axi_dynclk/s_axi_lite_aresetn] \
+    [get_bd_pins hdmi_out_hpd_video/s_axi_aresetn]
+connect_bd_net [get_bd_pins xlconst_zero/dout] \
+    [get_bd_pins v_axi4s_vid_out_0/vid_io_out_reset] \
+    [get_bd_pins v_axi4s_vid_out_0/fid]
+connect_bd_net [get_bd_pins xlconst_ce/dout] \
+    [get_bd_pins v_axi4s_vid_out_0/aclken] \
+    [get_bd_pins v_axi4s_vid_out_0/vid_io_out_ce]
+connect_bd_net [get_bd_pins xlconst_ce2/dout] \
+    [get_bd_pins vtc_out/clken] \
+    [get_bd_pins vtc_out/gen_clken] \
+    [get_bd_pins vtc_out/s_axi_aclken]
+connect_bd_net [get_bd_pins hdmi_out_hpd_video/gpio_io_o] [get_bd_pins hdmi_out_hpd]
+
+puts "=== 8) ★校验 BD★（接线错误的照妖镜）==="
+if {[catch {validate_bd_design} err]} {
+    puts "ERROR: validate_bd_design 失败: $err"
+    puts "（上面应该有具体哪根线的问题）"
+    exit 1
+}
+save_bd_design
+puts "    校验通过 ✓"
+
+puts "=== 9) 生成 wrapper 并打印顶层端口真名（XDC 要用）==="
+if {[catch {
+    make_wrapper -files [get_files probe.bd] -top
+    puts "    wrapper 已生成"
+} err]} { puts "WARN: make_wrapper: $err" }
+set wf [glob -nocomplain $pdir/probe_hdmi.gen/sources_1/bd/probe/hdl/probe_wrapper.v]
+if {[llength $wf]} {
+    puts "---- wrapper 顶层端口 ----"
+    set fh [open [lindex $wf 0] r]
+    while {[gets $fh line] >= 0} {
+        if {[string match "*input*" $line] || [string match "*output*" $line]} {
+            puts "    [string trim $line]"
+        }
+    }
+    close $fh
+} else { puts "WARN: 没找到 wrapper 文件" }
+
+puts "=== 10) vtc_out / axi_vdma_out 的接口引脚（补全上面没打完的）==="
+foreach c {vtc_out axi_vdma_out} {
+    puts "---- $c"
+    foreach i [get_bd_intf_pins -quiet -of_objects [get_bd_cells $c]] {
+        puts "      [get_property PATH $i] mode=[get_property MODE $i] vlnv=[get_property VLNV $i]"
+    }
+}
+puts "DONE: 探针跑完，主工程一个字节没动"

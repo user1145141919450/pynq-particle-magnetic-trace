@@ -1,0 +1,1033 @@
+==============================================================================
+1) 视频相关模块清单
+==============================================================================
+   /btns_gpio                                           xilinx.com:ip:axi_gpio:2.0
+   /constant_8bit_0                                     xilinx.com:ip:xlconstant:1.1
+   /iop_arduino/arduino_gpio                            xilinx.com:ip:axi_gpio:2.0
+   /iop_arduino/intr                                    xilinx.com:ip:axi_gpio:2.0
+   /iop_arduino/logic_1                                 xilinx.com:ip:xlconstant:1.1
+   /iop_pmoda/gpio                                      xilinx.com:ip:axi_gpio:2.0
+   /iop_pmoda/intr                                      xilinx.com:ip:axi_gpio:2.0
+   /iop_pmoda/logic_1                                   xilinx.com:ip:xlconstant:1.1
+   /iop_pmodb/gpio                                      xilinx.com:ip:axi_gpio:2.0
+   /iop_pmodb/intr                                      xilinx.com:ip:axi_gpio:2.0
+   /iop_pmodb/logic_1                                   xilinx.com:ip:xlconstant:1.1
+   /iop_rpi/intr                                        xilinx.com:ip:axi_gpio:2.0
+   /iop_rpi/logic_1                                     xilinx.com:ip:xlconstant:1.1
+   /iop_rpi/rpi_gpio                                    xilinx.com:ip:axi_gpio:2.0
+   /leds_gpio                                           xilinx.com:ip:axi_gpio:2.0
+   /logic_1                                             xilinx.com:ip:xlconstant:1.1
+   /rgbleds_gpio                                        xilinx.com:ip:axi_gpio:2.0
+   /switches_gpio                                       xilinx.com:ip:axi_gpio:2.0
+   /trace_analyzer_pi/constant_tkeep_tstrb              xilinx.com:ip:xlconstant:1.1
+   /trace_analyzer_pmodb/constant_tkeep_tstrb           xilinx.com:ip:xlconstant:1.1
+   /video/axi_vdma                                      xilinx.com:ip:axi_vdma:6.3
+   /video/hdmi_in/frontend/axi_gpio_hdmiin              xilinx.com:ip:axi_gpio:2.0
+   /video/hdmi_in/frontend/vtc_in                       xilinx.com:ip:v_tc:6.2
+   /video/hdmi_in/pixel_pack                            xilinx.com:hls:pixel_pack:1.0
+   /video/hdmi_out/frontend/axi_dynclk                  digilentinc.com:ip:axi_dynclk:1.0
+   /video/hdmi_out/frontend/hdmi_out_hpd_video          xilinx.com:ip:axi_gpio:2.0
+   /video/hdmi_out/frontend/rgb2dvi_0                   digilentinc.com:ip:rgb2dvi:1.2
+   /video/hdmi_out/frontend/v_axi4s_vid_out_0           xilinx.com:ip:v_axi4s_vid_out:4.0
+   /video/hdmi_out/frontend/vtc_out                     xilinx.com:ip:v_tc:6.2
+   （共 187 个模块，命中 29 个）
+
+==============================================================================
+2) 参数
+==============================================================================
+
+---- /btns_gpio   [xilinx.com:ip:axi_gpio:2.0]
+     C_ALL_INPUTS = 1
+     C_ALL_INPUTS_2 = 0
+     C_ALL_OUTPUTS = 0
+     C_ALL_OUTPUTS_2 = 0
+     C_DOUT_DEFAULT = 0x00000000
+     C_DOUT_DEFAULT_2 = 0x00000000
+     C_FAMILY = zynq
+     C_GPIO2_WIDTH = 32
+     C_GPIO_WIDTH = 4
+     C_INTERRUPT_PRESENT = 1
+     C_IS_DUAL = 0
+     C_S_AXI_ADDR_WIDTH = 9
+     C_S_AXI_DATA_WIDTH = 32
+     C_TRI_DEFAULT = 0xFFFFFFFF
+     C_TRI_DEFAULT_2 = 0xFFFFFFFF
+     C_BASEADDR = 0x41210000
+     C_HIGHADDR = 0x4121FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 8
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 8
+     NUM_WRITE_THREADS = 1
+
+---- /constant_8bit_0   [xilinx.com:ip:xlconstant:1.1]
+     (无匹配参数)
+
+---- /iop_arduino/arduino_gpio   [xilinx.com:ip:axi_gpio:2.0]
+     C_ALL_INPUTS = 0
+     C_ALL_INPUTS_2 = 0
+     C_ALL_OUTPUTS = 0
+     C_ALL_OUTPUTS_2 = 0
+     C_DOUT_DEFAULT = 0x00000000
+     C_DOUT_DEFAULT_2 = 0x00000000
+     C_FAMILY = zynq
+     C_GPIO2_WIDTH = 32
+     C_GPIO_WIDTH = 20
+     C_INTERRUPT_PRESENT = 1
+     C_IS_DUAL = 0
+     C_S_AXI_ADDR_WIDTH = 9
+     C_S_AXI_DATA_WIDTH = 32
+     C_TRI_DEFAULT = 0xFFFFFFFF
+     C_TRI_DEFAULT_2 = 0xFFFFFFFF
+     C_BASEADDR = 0x40020000
+     C_HIGHADDR = 0x4002FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 2
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 2
+     NUM_WRITE_THREADS = 1
+
+---- /iop_arduino/intr   [xilinx.com:ip:axi_gpio:2.0]
+     C_ALL_INPUTS = 0
+     C_ALL_INPUTS_2 = 0
+     C_ALL_OUTPUTS = 1
+     C_ALL_OUTPUTS_2 = 0
+     C_DOUT_DEFAULT = 0x00000000
+     C_DOUT_DEFAULT_2 = 0x00000000
+     C_FAMILY = zynq
+     C_GPIO2_WIDTH = 32
+     C_GPIO_WIDTH = 1
+     C_INTERRUPT_PRESENT = 0
+     C_IS_DUAL = 0
+     C_S_AXI_ADDR_WIDTH = 9
+     C_S_AXI_DATA_WIDTH = 32
+     C_TRI_DEFAULT = 0xFFFFFFFF
+     C_TRI_DEFAULT_2 = 0xFFFFFFFF
+     C_BASEADDR = 0x40010000
+     C_HIGHADDR = 0x4001FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 2
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 2
+     NUM_WRITE_THREADS = 1
+
+---- /iop_arduino/logic_1   [xilinx.com:ip:xlconstant:1.1]
+     (无匹配参数)
+
+---- /iop_pmoda/gpio   [xilinx.com:ip:axi_gpio:2.0]
+     C_ALL_INPUTS = 0
+     C_ALL_INPUTS_2 = 0
+     C_ALL_OUTPUTS = 0
+     C_ALL_OUTPUTS_2 = 0
+     C_DOUT_DEFAULT = 0x00000000
+     C_DOUT_DEFAULT_2 = 0x00000000
+     C_FAMILY = zynq
+     C_GPIO2_WIDTH = 32
+     C_GPIO_WIDTH = 8
+     C_INTERRUPT_PRESENT = 0
+     C_IS_DUAL = 0
+     C_S_AXI_ADDR_WIDTH = 9
+     C_S_AXI_DATA_WIDTH = 32
+     C_TRI_DEFAULT = 0xFFFFFFFF
+     C_TRI_DEFAULT_2 = 0xFFFFFFFF
+     C_BASEADDR = 0x40000000
+     C_HIGHADDR = 0x4000FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 2
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 2
+     NUM_WRITE_THREADS = 1
+
+---- /iop_pmoda/intr   [xilinx.com:ip:axi_gpio:2.0]
+     C_ALL_INPUTS = 0
+     C_ALL_INPUTS_2 = 0
+     C_ALL_OUTPUTS = 1
+     C_ALL_OUTPUTS_2 = 0
+     C_DOUT_DEFAULT = 0x00000000
+     C_DOUT_DEFAULT_2 = 0x00000000
+     C_FAMILY = zynq
+     C_GPIO2_WIDTH = 32
+     C_GPIO_WIDTH = 1
+     C_INTERRUPT_PRESENT = 0
+     C_IS_DUAL = 0
+     C_S_AXI_ADDR_WIDTH = 9
+     C_S_AXI_DATA_WIDTH = 32
+     C_TRI_DEFAULT = 0xFFFFFFFF
+     C_TRI_DEFAULT_2 = 0xFFFFFFFF
+     C_BASEADDR = 0x40010000
+     C_HIGHADDR = 0x4001FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 2
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 2
+     NUM_WRITE_THREADS = 1
+
+---- /iop_pmoda/logic_1   [xilinx.com:ip:xlconstant:1.1]
+     (无匹配参数)
+
+---- /iop_pmodb/gpio   [xilinx.com:ip:axi_gpio:2.0]
+     C_ALL_INPUTS = 0
+     C_ALL_INPUTS_2 = 0
+     C_ALL_OUTPUTS = 0
+     C_ALL_OUTPUTS_2 = 0
+     C_DOUT_DEFAULT = 0x00000000
+     C_DOUT_DEFAULT_2 = 0x00000000
+     C_FAMILY = zynq
+     C_GPIO2_WIDTH = 32
+     C_GPIO_WIDTH = 8
+     C_INTERRUPT_PRESENT = 0
+     C_IS_DUAL = 0
+     C_S_AXI_ADDR_WIDTH = 9
+     C_S_AXI_DATA_WIDTH = 32
+     C_TRI_DEFAULT = 0xFFFFFFFF
+     C_TRI_DEFAULT_2 = 0xFFFFFFFF
+     C_BASEADDR = 0x40000000
+     C_HIGHADDR = 0x4000FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 2
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 2
+     NUM_WRITE_THREADS = 1
+
+---- /iop_pmodb/intr   [xilinx.com:ip:axi_gpio:2.0]
+     C_ALL_INPUTS = 0
+     C_ALL_INPUTS_2 = 0
+     C_ALL_OUTPUTS = 1
+     C_ALL_OUTPUTS_2 = 0
+     C_DOUT_DEFAULT = 0x00000000
+     C_DOUT_DEFAULT_2 = 0x00000000
+     C_FAMILY = zynq
+     C_GPIO2_WIDTH = 32
+     C_GPIO_WIDTH = 1
+     C_INTERRUPT_PRESENT = 0
+     C_IS_DUAL = 0
+     C_S_AXI_ADDR_WIDTH = 9
+     C_S_AXI_DATA_WIDTH = 32
+     C_TRI_DEFAULT = 0xFFFFFFFF
+     C_TRI_DEFAULT_2 = 0xFFFFFFFF
+     C_BASEADDR = 0x40010000
+     C_HIGHADDR = 0x4001FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 2
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 2
+     NUM_WRITE_THREADS = 1
+
+---- /iop_pmodb/logic_1   [xilinx.com:ip:xlconstant:1.1]
+     (无匹配参数)
+
+---- /iop_rpi/intr   [xilinx.com:ip:axi_gpio:2.0]
+     C_ALL_INPUTS = 0
+     C_ALL_INPUTS_2 = 0
+     C_ALL_OUTPUTS = 1
+     C_ALL_OUTPUTS_2 = 0
+     C_DOUT_DEFAULT = 0x00000000
+     C_DOUT_DEFAULT_2 = 0x00000000
+     C_FAMILY = zynq
+     C_GPIO2_WIDTH = 32
+     C_GPIO_WIDTH = 1
+     C_INTERRUPT_PRESENT = 0
+     C_IS_DUAL = 0
+     C_S_AXI_ADDR_WIDTH = 9
+     C_S_AXI_DATA_WIDTH = 32
+     C_TRI_DEFAULT = 0xFFFFFFFF
+     C_TRI_DEFAULT_2 = 0xFFFFFFFF
+     C_BASEADDR = 0x40010000
+     C_HIGHADDR = 0x4001FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 2
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 2
+     NUM_WRITE_THREADS = 1
+
+---- /iop_rpi/logic_1   [xilinx.com:ip:xlconstant:1.1]
+     (无匹配参数)
+
+---- /iop_rpi/rpi_gpio   [xilinx.com:ip:axi_gpio:2.0]
+     C_ALL_INPUTS = 0
+     C_ALL_INPUTS_2 = 0
+     C_ALL_OUTPUTS = 0
+     C_ALL_OUTPUTS_2 = 0
+     C_DOUT_DEFAULT = 0x00000000
+     C_DOUT_DEFAULT_2 = 0x00000000
+     C_FAMILY = zynq
+     C_GPIO2_WIDTH = 32
+     C_GPIO_WIDTH = 28
+     C_INTERRUPT_PRESENT = 1
+     C_IS_DUAL = 0
+     C_S_AXI_ADDR_WIDTH = 9
+     C_S_AXI_DATA_WIDTH = 32
+     C_TRI_DEFAULT = 0xFFFFFFFF
+     C_TRI_DEFAULT_2 = 0xFFFFFFFF
+     C_BASEADDR = 0x40000000
+     C_HIGHADDR = 0x4000FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 2
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 2
+     NUM_WRITE_THREADS = 1
+
+---- /leds_gpio   [xilinx.com:ip:axi_gpio:2.0]
+     C_ALL_INPUTS = 0
+     C_ALL_INPUTS_2 = 0
+     C_ALL_OUTPUTS = 1
+     C_ALL_OUTPUTS_2 = 0
+     C_DOUT_DEFAULT = 0x00000000
+     C_DOUT_DEFAULT_2 = 0x00000000
+     C_FAMILY = zynq
+     C_GPIO2_WIDTH = 32
+     C_GPIO_WIDTH = 4
+     C_INTERRUPT_PRESENT = 1
+     C_IS_DUAL = 0
+     C_S_AXI_ADDR_WIDTH = 9
+     C_S_AXI_DATA_WIDTH = 32
+     C_TRI_DEFAULT = 0xFFFFFFFF
+     C_TRI_DEFAULT_2 = 0xFFFFFFFF
+     C_BASEADDR = 0x41250000
+     C_HIGHADDR = 0x4125FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 8
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 8
+     NUM_WRITE_THREADS = 1
+
+---- /logic_1   [xilinx.com:ip:xlconstant:1.1]
+     (无匹配参数)
+
+---- /rgbleds_gpio   [xilinx.com:ip:axi_gpio:2.0]
+     C_ALL_INPUTS = 0
+     C_ALL_INPUTS_2 = 0
+     C_ALL_OUTPUTS = 1
+     C_ALL_OUTPUTS_2 = 0
+     C_DOUT_DEFAULT = 0x00000000
+     C_DOUT_DEFAULT_2 = 0x00000000
+     C_FAMILY = zynq
+     C_GPIO2_WIDTH = 32
+     C_GPIO_WIDTH = 6
+     C_INTERRUPT_PRESENT = 0
+     C_IS_DUAL = 0
+     C_S_AXI_ADDR_WIDTH = 9
+     C_S_AXI_DATA_WIDTH = 32
+     C_TRI_DEFAULT = 0xFFFFFFFF
+     C_TRI_DEFAULT_2 = 0xFFFFFFFF
+     C_BASEADDR = 0x41240000
+     C_HIGHADDR = 0x4124FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 8
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 8
+     NUM_WRITE_THREADS = 1
+
+---- /switches_gpio   [xilinx.com:ip:axi_gpio:2.0]
+     C_ALL_INPUTS = 1
+     C_ALL_INPUTS_2 = 0
+     C_ALL_OUTPUTS = 0
+     C_ALL_OUTPUTS_2 = 0
+     C_DOUT_DEFAULT = 0x00000000
+     C_DOUT_DEFAULT_2 = 0x00000000
+     C_FAMILY = zynq
+     C_GPIO2_WIDTH = 32
+     C_GPIO_WIDTH = 2
+     C_INTERRUPT_PRESENT = 1
+     C_IS_DUAL = 0
+     C_S_AXI_ADDR_WIDTH = 9
+     C_S_AXI_DATA_WIDTH = 32
+     C_TRI_DEFAULT = 0xFFFFFFFF
+     C_TRI_DEFAULT_2 = 0xFFFFFFFF
+     C_BASEADDR = 0x41200000
+     C_HIGHADDR = 0x4120FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 8
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 8
+     NUM_WRITE_THREADS = 1
+
+---- /trace_analyzer_pi/constant_tkeep_tstrb   [xilinx.com:ip:xlconstant:1.1]
+     (无匹配参数)
+
+---- /trace_analyzer_pmodb/constant_tkeep_tstrb   [xilinx.com:ip:xlconstant:1.1]
+     (无匹配参数)
+
+---- /video/axi_vdma   [xilinx.com:ip:axi_vdma:6.3]
+     C_DLYTMR_RESOLUTION = 125
+     C_DYNAMIC_RESOLUTION = 1
+     C_ENABLE_DEBUG_ALL = 0
+     C_ENABLE_DEBUG_INFO_0 = 0
+     C_ENABLE_DEBUG_INFO_1 = 0
+     C_ENABLE_DEBUG_INFO_2 = 0
+     C_ENABLE_DEBUG_INFO_3 = 0
+     C_ENABLE_DEBUG_INFO_4 = 0
+     C_ENABLE_DEBUG_INFO_5 = 0
+     C_ENABLE_DEBUG_INFO_6 = 1
+     C_ENABLE_DEBUG_INFO_7 = 1
+     C_ENABLE_DEBUG_INFO_8 = 0
+     C_ENABLE_DEBUG_INFO_9 = 0
+     C_ENABLE_DEBUG_INFO_10 = 0
+     C_ENABLE_DEBUG_INFO_11 = 0
+     C_ENABLE_DEBUG_INFO_12 = 0
+     C_ENABLE_DEBUG_INFO_13 = 0
+     C_ENABLE_DEBUG_INFO_14 = 1
+     C_ENABLE_DEBUG_INFO_15 = 1
+     C_ENABLE_VERT_FLIP = 0
+     C_ENABLE_VIDPRMTR_READS = 1
+     C_FAMILY = zynq
+     C_FLUSH_ON_FSYNC = 1
+     C_INCLUDE_INTERNAL_GENLOCK = 1
+     C_INCLUDE_MM2S = 1
+     C_INCLUDE_MM2S_DRE = 0
+     C_INCLUDE_MM2S_SF = 0
+     C_INCLUDE_S2MM = 1
+     C_INCLUDE_S2MM_DRE = 0
+     C_INCLUDE_S2MM_SF = 1
+     C_INCLUDE_SG = 0
+     C_INSTANCE = axi_vdma
+     C_MM2S_GENLOCK_MODE = 1
+     C_MM2S_GENLOCK_NUM_MASTERS = 1
+     C_MM2S_GENLOCK_REPEAT_EN = 0
+     C_MM2S_LINEBUFFER_DEPTH = 512
+     C_MM2S_LINEBUFFER_THRESH = 4
+     C_MM2S_MAX_BURST_LENGTH = 32
+     C_MM2S_SOF_ENABLE = 1
+     C_M_AXIS_MM2S_TDATA_WIDTH = 32
+     C_M_AXIS_MM2S_TUSER_BITS = 1
+     C_M_AXI_MM2S_ADDR_WIDTH = 32
+     C_M_AXI_MM2S_DATA_WIDTH = 32
+     C_M_AXI_S2MM_ADDR_WIDTH = 32
+     C_M_AXI_S2MM_DATA_WIDTH = 64
+     C_M_AXI_SG_ADDR_WIDTH = 32
+     C_M_AXI_SG_DATA_WIDTH = 32
+     C_NUM_FSTORES = 4
+     C_PRMRY_IS_ACLK_ASYNC = 0
+     C_S2MM_GENLOCK_MODE = 0
+     C_S2MM_GENLOCK_NUM_MASTERS = 1
+     C_S2MM_GENLOCK_REPEAT_EN = 1
+     C_S2MM_LINEBUFFER_DEPTH = 4096
+     C_S2MM_LINEBUFFER_THRESH = 4
+     C_S2MM_MAX_BURST_LENGTH = 32
+     C_S2MM_SOF_ENABLE = 1
+     C_SELECT_XPM = 0
+     C_S_AXIS_S2MM_TDATA_WIDTH = 32
+     C_S_AXIS_S2MM_TUSER_BITS = 1
+     C_S_AXI_LITE_ADDR_WIDTH = 9
+     C_S_AXI_LITE_DATA_WIDTH = 32
+     C_USE_FSYNC = 1
+     C_USE_MM2S_FSYNC = 0
+     C_USE_S2MM_FSYNC = 2
+     c_addr_width = 32
+     c_dlytmr_resolution = 125
+     c_dynamic_resolution = 1
+     c_enable_all = 0
+     c_enable_mm2s_buf_empty = 0
+     c_enable_mm2s_delay_counter = 1
+     c_enable_mm2s_frm_counter = 1
+     c_enable_mm2s_frmstr_reg = 0
+     c_enable_mm2s_fsync_out = 0
+     c_enable_mm2s_param_updt = 0
+     c_enable_mm2s_rst_out = 0
+     c_enable_s2mm_buf_full = 0
+     c_enable_s2mm_delay_counter = 1
+     c_enable_s2mm_frm_counter = 1
+     c_enable_s2mm_frmstr_reg = 0
+     c_enable_s2mm_fsync_out = 0
+     c_enable_s2mm_param_updt = 0
+     c_enable_s2mm_rst_out = 0
+     c_enable_s2mm_sts_reg = 0
+     c_enable_tstvec = 0
+     c_enable_vert_flip = 0
+     c_enable_vidprmtr_reads = 1
+     c_flush_on_fsync = 1
+     c_include_internal_genlock = 1
+     c_include_mm2s = 1
+     c_include_mm2s_dre = 0
+     c_include_mm2s_sf = 0
+     c_include_s2mm = 1
+     c_include_s2mm_dre = 0
+     c_include_s2mm_sf = 1
+     c_include_sg = 0
+     c_m_axi_mm2s_data_width = 32
+     c_m_axi_s2mm_data_width = 64
+     c_m_axis_mm2s_tdata_width = 32
+     c_mm2s_genlock_mode = 1
+     c_mm2s_genlock_num_masters = 1
+     c_mm2s_genlock_repeat_en = 0
+     c_mm2s_linebuffer_depth = 512
+     c_mm2s_linebuffer_thresh = 4
+     c_mm2s_max_burst_length = 32
+     c_mm2s_sof_enable = 1
+     c_num_fstores = 4
+     c_prmry_is_aclk_async = 0
+     c_s2mm_genlock_mode = 0
+     c_s2mm_genlock_num_masters = 1
+     c_s2mm_genlock_repeat_en = 1
+     c_s2mm_linebuffer_depth = 4096
+     c_s2mm_linebuffer_thresh = 4
+     c_s2mm_max_burst_length = 32
+     c_s2mm_sof_enable = 1
+     c_s_axis_s2mm_tdata_width = 32
+     c_single_interface = 0
+     c_use_fsync = 1
+     c_use_mm2s_fsync = 0
+     c_use_s2mm_fsync = 2
+     C_BASEADDR = 0x43000000
+     C_HIGHADDR = 0x4300FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 2
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 2
+     NUM_WRITE_THREADS = 1
+     MAX_BURST_LENGTH = 32
+     NUM_READ_OUTSTANDING = 2
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 2
+     NUM_WRITE_THREADS = 1
+     MAX_BURST_LENGTH = 32
+     NUM_READ_OUTSTANDING = 2
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 2
+     NUM_WRITE_THREADS = 1
+
+---- /video/hdmi_in/frontend/axi_gpio_hdmiin   [xilinx.com:ip:axi_gpio:2.0]
+     C_ALL_INPUTS = 0
+     C_ALL_INPUTS_2 = 1
+     C_ALL_OUTPUTS = 1
+     C_ALL_OUTPUTS_2 = 0
+     C_DOUT_DEFAULT = 0x00000000
+     C_DOUT_DEFAULT_2 = 0x00000000
+     C_FAMILY = zynq
+     C_GPIO2_WIDTH = 1
+     C_GPIO_WIDTH = 1
+     C_INTERRUPT_PRESENT = 1
+     C_IS_DUAL = 1
+     C_S_AXI_ADDR_WIDTH = 9
+     C_S_AXI_DATA_WIDTH = 32
+     C_TRI_DEFAULT = 0xFFFFFFFF
+     C_TRI_DEFAULT_2 = 0xFFFFFFFF
+     C_BASEADDR = 0x41220000
+     C_HIGHADDR = 0x4122FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 2
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 2
+     NUM_WRITE_THREADS = 1
+
+---- /video/hdmi_in/frontend/vtc_in   [xilinx.com:ip:v_tc:6.2]
+     C_ARBITRARY_RES_EN = 0
+     C_DETECT_EN = 1
+     C_DET_ACHROMA_EN = 0
+     C_DET_AVIDEO_EN = 1
+     C_DET_FIELDID_EN = 0
+     C_DET_HBLANK_EN = 0
+     C_DET_HSYNC_EN = 1
+     C_DET_VBLANK_EN = 0
+     C_DET_VSYNC_EN = 1
+     C_FSYNC_HSTART0 = 0
+     C_FSYNC_HSTART1 = 0
+     C_FSYNC_HSTART2 = 0
+     C_FSYNC_HSTART3 = 0
+     C_FSYNC_HSTART4 = 0
+     C_FSYNC_HSTART5 = 0
+     C_FSYNC_HSTART6 = 0
+     C_FSYNC_HSTART7 = 0
+     C_FSYNC_HSTART8 = 0
+     C_FSYNC_HSTART9 = 0
+     C_FSYNC_HSTART10 = 0
+     C_FSYNC_HSTART11 = 0
+     C_FSYNC_HSTART12 = 0
+     C_FSYNC_HSTART13 = 0
+     C_FSYNC_HSTART14 = 0
+     C_FSYNC_HSTART15 = 0
+     C_FSYNC_VSTART0 = 0
+     C_FSYNC_VSTART1 = 0
+     C_FSYNC_VSTART2 = 0
+     C_FSYNC_VSTART3 = 0
+     C_FSYNC_VSTART4 = 0
+     C_FSYNC_VSTART5 = 0
+     C_FSYNC_VSTART6 = 0
+     C_FSYNC_VSTART7 = 0
+     C_FSYNC_VSTART8 = 0
+     C_FSYNC_VSTART9 = 0
+     C_FSYNC_VSTART10 = 0
+     C_FSYNC_VSTART11 = 0
+     C_FSYNC_VSTART12 = 0
+     C_FSYNC_VSTART13 = 0
+     C_FSYNC_VSTART14 = 0
+     C_FSYNC_VSTART15 = 0
+     C_GENERATE_EN = 0
+     C_GEN_ACHROMA_EN = 0
+     C_GEN_ACHROMA_POLARITY = 1
+     C_GEN_AUTO_SWITCH = 0
+     C_GEN_AVIDEO_EN = 1
+     C_GEN_AVIDEO_POLARITY = 1
+     C_GEN_CPARITY = 0
+     C_GEN_F0_VBLANK_HEND = 1390
+     C_GEN_F0_VBLANK_HSTART = 1390
+     C_GEN_F0_VFRAME_SIZE = 750
+     C_GEN_F0_VSYNC_HEND = 1390
+     C_GEN_F0_VSYNC_HSTART = 1390
+     C_GEN_F0_VSYNC_VEND = 729
+     C_GEN_F0_VSYNC_VSTART = 724
+     C_GEN_F1_VBLANK_HEND = 1390
+     C_GEN_F1_VBLANK_HSTART = 1390
+     C_GEN_F1_VFRAME_SIZE = 750
+     C_GEN_F1_VSYNC_HEND = 1390
+     C_GEN_F1_VSYNC_HSTART = 1390
+     C_GEN_F1_VSYNC_VEND = 729
+     C_GEN_F1_VSYNC_VSTART = 724
+     C_GEN_FIELDID_EN = 0
+     C_GEN_FIELDID_POLARITY = 1
+     C_GEN_HACTIVE_SIZE = 1280
+     C_GEN_HBLANK_EN = 1
+     C_GEN_HBLANK_POLARITY = 1
+     C_GEN_HFRAME_SIZE = 1650
+     C_GEN_HSYNC_EN = 1
+     C_GEN_HSYNC_END = 1430
+     C_GEN_HSYNC_POLARITY = 1
+     C_GEN_HSYNC_START = 1390
+     C_GEN_INTERLACED = 0
+     C_GEN_VACTIVE_SIZE = 720
+     C_GEN_VBLANK_EN = 1
+     C_GEN_VBLANK_POLARITY = 1
+     C_GEN_VIDEO_FORMAT = 2
+     C_GEN_VSYNC_EN = 1
+     C_GEN_VSYNC_POLARITY = 1
+     C_HAS_AXI4_LITE = 1
+     C_HAS_INTC_IF = 1
+     C_INTERLACE_EN = 0
+     C_MAX_LINES = 2048
+     C_MAX_PIXELS = 4096
+     C_NUM_FSYNCS = 1
+     C_SYNC_EN = 0
+     C_VID_PPC = 4
+     C_FAMILY = virtex7
+     enable_detection = true
+     enable_generation = false
+     max_clocks_per_line = 4096
+     max_lines_per_frame = 2048
+     C_BASEADDR = 0x43C30000
+     C_HIGHADDR = 0x43C3FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 2
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 2
+     NUM_WRITE_THREADS = 1
+
+---- /video/hdmi_in/pixel_pack   [xilinx.com:hls:pixel_pack:1.0]
+     C_S_AXI_CONTROL_ADDR_WIDTH = 5
+     C_S_AXI_CONTROL_DATA_WIDTH = 32
+     C_S_AXI_CONTROL_BASEADDR = 0x43C40000
+     C_S_AXI_CONTROL_HIGHADDR = 0x43C4FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 1
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 1
+     NUM_WRITE_THREADS = 1
+
+---- /video/hdmi_out/frontend/axi_dynclk   [digilentinc.com:ip:axi_dynclk:1.0]
+     C_S00_AXI_ADDR_WIDTH = 5
+     C_S00_AXI_DATA_WIDTH = 32
+     C_BASEADDR = 0x43C10000
+     C_HIGHADDR = 0x43C1FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 1
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 1
+     NUM_WRITE_THREADS = 1
+
+---- /video/hdmi_out/frontend/hdmi_out_hpd_video   [xilinx.com:ip:axi_gpio:2.0]
+     C_ALL_INPUTS = 0
+     C_ALL_INPUTS_2 = 0
+     C_ALL_OUTPUTS = 1
+     C_ALL_OUTPUTS_2 = 0
+     C_DOUT_DEFAULT = 0x00000000
+     C_DOUT_DEFAULT_2 = 0x00000000
+     C_FAMILY = zynq
+     C_GPIO2_WIDTH = 32
+     C_GPIO_WIDTH = 1
+     C_INTERRUPT_PRESENT = 1
+     C_IS_DUAL = 0
+     C_S_AXI_ADDR_WIDTH = 9
+     C_S_AXI_DATA_WIDTH = 32
+     C_TRI_DEFAULT = 0xFFFFFFFF
+     C_TRI_DEFAULT_2 = 0xFFFFFFFF
+     C_BASEADDR = 0x41230000
+     C_HIGHADDR = 0x4123FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 2
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 2
+     NUM_WRITE_THREADS = 1
+
+---- /video/hdmi_out/frontend/rgb2dvi_0   [digilentinc.com:ip:rgb2dvi:1.2]
+     kClkPrimitive = MMCM
+     kClkRange = 2
+     kGenerateSerialClk = false
+     kRstActiveHigh = false
+
+---- /video/hdmi_out/frontend/v_axi4s_vid_out_0   [xilinx.com:ip:v_axi4s_vid_out:4.0]
+     C_ADDR_WIDTH = 11
+     C_ADDR_WIDTH_PIXEL_REMAP_420 = 10
+     C_ARBITRARY_RES_EN = 0
+     C_COMPONENTS_PER_PIXEL = 3
+     C_FAMILY = zynq
+     C_HAS_ASYNC_CLK = 1
+     C_HYSTERESIS_LEVEL = 1024
+     C_INCLUDE_PIXEL_REMAP_420 = 0
+     C_INCLUDE_PIXEL_REPEAT = 0
+     C_NATIVE_COMPONENT_WIDTH = 8
+     C_NATIVE_DATA_WIDTH = 24
+     C_PIXELS_PER_CLOCK = 1
+     C_SYNC_LOCK_THRESHOLD = 4
+     C_S_AXIS_COMPONENT_WIDTH = 8
+     C_S_AXIS_TDATA_WIDTH = 24
+     C_VTG_MASTER_SLAVE = 1
+     C_S_AXIS_VIDEO_DATA_WIDTH = 8
+     C_S_AXIS_VIDEO_FORMAT = 2
+
+---- /video/hdmi_out/frontend/vtc_out   [xilinx.com:ip:v_tc:6.2]
+     C_ARBITRARY_RES_EN = 0
+     C_DETECT_EN = 0
+     C_DET_ACHROMA_EN = 0
+     C_DET_AVIDEO_EN = 1
+     C_DET_FIELDID_EN = 0
+     C_DET_HBLANK_EN = 1
+     C_DET_HSYNC_EN = 1
+     C_DET_VBLANK_EN = 1
+     C_DET_VSYNC_EN = 1
+     C_FSYNC_HSTART0 = 0
+     C_FSYNC_HSTART1 = 0
+     C_FSYNC_HSTART2 = 0
+     C_FSYNC_HSTART3 = 0
+     C_FSYNC_HSTART4 = 0
+     C_FSYNC_HSTART5 = 0
+     C_FSYNC_HSTART6 = 0
+     C_FSYNC_HSTART7 = 0
+     C_FSYNC_HSTART8 = 0
+     C_FSYNC_HSTART9 = 0
+     C_FSYNC_HSTART10 = 0
+     C_FSYNC_HSTART11 = 0
+     C_FSYNC_HSTART12 = 0
+     C_FSYNC_HSTART13 = 0
+     C_FSYNC_HSTART14 = 0
+     C_FSYNC_HSTART15 = 0
+     C_FSYNC_VSTART0 = 0
+     C_FSYNC_VSTART1 = 0
+     C_FSYNC_VSTART2 = 0
+     C_FSYNC_VSTART3 = 0
+     C_FSYNC_VSTART4 = 0
+     C_FSYNC_VSTART5 = 0
+     C_FSYNC_VSTART6 = 0
+     C_FSYNC_VSTART7 = 0
+     C_FSYNC_VSTART8 = 0
+     C_FSYNC_VSTART9 = 0
+     C_FSYNC_VSTART10 = 0
+     C_FSYNC_VSTART11 = 0
+     C_FSYNC_VSTART12 = 0
+     C_FSYNC_VSTART13 = 0
+     C_FSYNC_VSTART14 = 0
+     C_FSYNC_VSTART15 = 0
+     C_GENERATE_EN = 1
+     C_GEN_ACHROMA_EN = 0
+     C_GEN_ACHROMA_POLARITY = 1
+     C_GEN_AUTO_SWITCH = 0
+     C_GEN_AVIDEO_EN = 1
+     C_GEN_AVIDEO_POLARITY = 1
+     C_GEN_CPARITY = 0
+     C_GEN_F0_VBLANK_HEND = 1280
+     C_GEN_F0_VBLANK_HSTART = 1280
+     C_GEN_F0_VFRAME_SIZE = 750
+     C_GEN_F0_VSYNC_HEND = 1280
+     C_GEN_F0_VSYNC_HSTART = 1280
+     C_GEN_F0_VSYNC_VEND = 729
+     C_GEN_F0_VSYNC_VSTART = 724
+     C_GEN_F1_VBLANK_HEND = 1280
+     C_GEN_F1_VBLANK_HSTART = 1280
+     C_GEN_F1_VFRAME_SIZE = 750
+     C_GEN_F1_VSYNC_HEND = 1280
+     C_GEN_F1_VSYNC_HSTART = 1280
+     C_GEN_F1_VSYNC_VEND = 729
+     C_GEN_F1_VSYNC_VSTART = 724
+     C_GEN_FIELDID_EN = 0
+     C_GEN_FIELDID_POLARITY = 1
+     C_GEN_HACTIVE_SIZE = 1280
+     C_GEN_HBLANK_EN = 1
+     C_GEN_HBLANK_POLARITY = 1
+     C_GEN_HFRAME_SIZE = 1650
+     C_GEN_HSYNC_EN = 1
+     C_GEN_HSYNC_END = 1430
+     C_GEN_HSYNC_POLARITY = 1
+     C_GEN_HSYNC_START = 1390
+     C_GEN_INTERLACED = 0
+     C_GEN_VACTIVE_SIZE = 720
+     C_GEN_VBLANK_EN = 1
+     C_GEN_VBLANK_POLARITY = 1
+     C_GEN_VIDEO_FORMAT = 2
+     C_GEN_VSYNC_EN = 1
+     C_GEN_VSYNC_POLARITY = 1
+     C_HAS_AXI4_LITE = 1
+     C_HAS_INTC_IF = 0
+     C_INTERLACE_EN = 0
+     C_MAX_LINES = 4096
+     C_MAX_PIXELS = 4096
+     C_NUM_FSYNCS = 1
+     C_SYNC_EN = 0
+     C_VID_PPC = 4
+     C_FAMILY = virtex7
+     enable_detection = false
+     enable_generation = true
+     max_clocks_per_line = 4096
+     max_lines_per_frame = 4096
+     C_BASEADDR = 0x43C20000
+     C_HIGHADDR = 0x43C2FFFF
+     MAX_BURST_LENGTH = 1
+     NUM_READ_OUTSTANDING = 2
+     NUM_READ_THREADS = 1
+     NUM_WRITE_OUTSTANDING = 2
+     NUM_WRITE_THREADS = 1
+
+==============================================================================
+3) ★接线★ —— 只看有数据/时钟意义的引脚（SIGNAME 相同 = 连在一起）
+==============================================================================
+
+---- /btns_gpio
+     gpio_io_i                    I [4-1:0]      sig=btns_gpio_gpio_io_i
+     s_axi_aclk                   I              sig=ps7_0_FCLK_CLK0
+     s_axi_aresetn                I              sig=rst_ps7_0_fclk0_peripheral_aresetn
+
+---- /iop_arduino/arduino_gpio
+     gpio_io_i                    I [20-1:0]     sig=iop_arduino_arduino_gpio_gpio_io_i
+     gpio_io_o                    O [20-1:0]     sig=iop_arduino_arduino_gpio_gpio_io_o
+     gpio_io_t                    O [20-1:0]     sig=iop_arduino_arduino_gpio_gpio_io_t
+     s_axi_aclk                   I              sig=ps7_0_FCLK_CLK0
+     s_axi_aresetn                I              sig=iop_arduino_rst_clk_wiz_1_100M_peripheral_aresetn
+
+---- /iop_arduino/intr
+     gpio_io_o                    O [1-1:0]      sig=iop_arduino_intr_gpio_io_o
+     s_axi_aclk                   I              sig=ps7_0_FCLK_CLK0
+     s_axi_aresetn                I              sig=rst_ps7_0_fclk0_peripheral_aresetn
+
+---- /iop_pmoda/gpio
+     gpio_io_i                    I [8-1:0]      sig=iop_pmoda_gpio_gpio_io_i
+     gpio_io_o                    O [8-1:0]      sig=iop_pmoda_gpio_gpio_io_o
+     gpio_io_t                    O [8-1:0]      sig=iop_pmoda_gpio_gpio_io_t
+     s_axi_aclk                   I              sig=ps7_0_FCLK_CLK0
+     s_axi_aresetn                I              sig=iop_pmoda_rst_clk_wiz_1_100M_peripheral_aresetn
+
+---- /iop_pmoda/intr
+     gpio_io_o                    O [1-1:0]      sig=iop_pmoda_intr_gpio_io_o
+     s_axi_aclk                   I              sig=ps7_0_FCLK_CLK0
+     s_axi_aresetn                I              sig=rst_ps7_0_fclk0_peripheral_aresetn
+
+---- /iop_pmodb/gpio
+     gpio_io_i                    I [8-1:0]      sig=iop_pmodb_gpio_gpio_io_i
+     gpio_io_o                    O [8-1:0]      sig=iop_pmodb_gpio_gpio_io_o
+     gpio_io_t                    O [8-1:0]      sig=iop_pmodb_gpio_gpio_io_t
+     s_axi_aclk                   I              sig=ps7_0_FCLK_CLK0
+     s_axi_aresetn                I              sig=iop_pmodb_rst_clk_wiz_1_100M_peripheral_aresetn
+
+---- /iop_pmodb/intr
+     gpio_io_o                    O [1-1:0]      sig=iop_pmodb_intr_gpio_io_o
+     s_axi_aclk                   I              sig=ps7_0_FCLK_CLK0
+     s_axi_aresetn                I              sig=rst_ps7_0_fclk0_peripheral_aresetn
+
+---- /iop_rpi/intr
+     gpio_io_o                    O [1-1:0]      sig=iop_rpi_intr_gpio_io_o
+     s_axi_aclk                   I              sig=ps7_0_FCLK_CLK0
+     s_axi_aresetn                I              sig=rst_ps7_0_fclk0_peripheral_aresetn
+
+---- /iop_rpi/rpi_gpio
+     gpio_io_i                    I [28-1:0]     sig=iop_rpi_io_switch_gpio_data_i
+     gpio_io_o                    O [28-1:0]     sig=iop_rpi_io_switch_gpio_data_o
+     gpio_io_t                    O [28-1:0]     sig=iop_rpi_io_switch_gpio_tri_o
+     s_axi_aclk                   I              sig=ps7_0_FCLK_CLK0
+     s_axi_aresetn                I              sig=iop_rpi_rst_clk_wiz_1_100M_peripheral_aresetn
+
+---- /leds_gpio
+     gpio_io_o                    O [4-1:0]      sig=leds_gpio_gpio_io_o
+     s_axi_aclk                   I              sig=ps7_0_FCLK_CLK0
+     s_axi_aresetn                I              sig=rst_ps7_0_fclk0_peripheral_aresetn
+
+---- /rgbleds_gpio
+     gpio_io_o                    O [6-1:0]      sig=rgbleds_gpio_gpio_io_o
+     s_axi_aclk                   I              sig=ps7_0_FCLK_CLK0
+     s_axi_aresetn                I              sig=rst_ps7_0_fclk0_peripheral_aresetn
+
+---- /switches_gpio
+     gpio_io_i                    I [2-1:0]      sig=switches_gpio_gpio_io_i
+     s_axi_aclk                   I              sig=ps7_0_FCLK_CLK0
+     s_axi_aresetn                I              sig=rst_ps7_0_fclk0_peripheral_aresetn
+
+---- /video/axi_vdma
+     axi_resetn                   I              sig=rst_ps7_0_fclk0_peripheral_aresetn
+     m_axi_mm2s_aclk              I              sig=ps7_0_FCLK_CLK1
+     m_axi_mm2s_arburst           O [2-1:0]      sig=video_axi_mem_intercon_S01_AXI_arburst
+     m_axi_s2mm_aclk              I              sig=ps7_0_FCLK_CLK1
+     m_axi_s2mm_awburst           O [2-1:0]      sig=video_axi_mem_intercon_S00_AXI_awburst
+     m_axis_mm2s_aclk             I              sig=ps7_0_FCLK_CLK1
+     m_axis_mm2s_tdata            O [32-1:0]     sig=video_axi_vdma_m_axis_mm2s_tdata
+     m_axis_mm2s_tkeep            O [4-1:0]      sig=video_axi_vdma_m_axis_mm2s_tkeep
+     m_axis_mm2s_tlast            O              sig=video_axi_vdma_m_axis_mm2s_tlast
+     m_axis_mm2s_tready           I              sig=video_axi_vdma_m_axis_mm2s_tready
+     m_axis_mm2s_tuser            O [1-1:0]      sig=video_axi_vdma_m_axis_mm2s_tuser
+     m_axis_mm2s_tvalid           O              sig=video_axi_vdma_m_axis_mm2s_tvalid
+     s_axi_lite_aclk              I              sig=ps7_0_FCLK_CLK0
+     s_axis_s2mm_aclk             I              sig=ps7_0_FCLK_CLK1
+     s_axis_s2mm_tdata            I [32-1:0]     sig=video_axi_vdma_s_axis_s2mm_tdata
+     s_axis_s2mm_tkeep            I [4-1:0]      sig=video_axi_vdma_s_axis_s2mm_tkeep
+     s_axis_s2mm_tlast            I              sig=video_axi_vdma_s_axis_s2mm_tlast
+     s_axis_s2mm_tready           O              sig=video_axi_vdma_s_axis_s2mm_tready
+     s_axis_s2mm_tuser            I [1-1:0]      sig=video_axi_vdma_s_axis_s2mm_tuser
+     s_axis_s2mm_tvalid           I              sig=video_axi_vdma_s_axis_s2mm_tvalid
+
+---- /video/hdmi_in/frontend/axi_gpio_hdmiin
+     gpio2_io_i                   I [1-1:0]      sig=video_hdmi_in_frontend_dvi2rgb_0_aPixelClkLckd
+     gpio_io_o                    O [1-1:0]      sig=video_hdmi_in_frontend_axi_gpio_hdmiin_gpio_io_o
+     s_axi_aclk                   I              sig=ps7_0_FCLK_CLK0
+     s_axi_aresetn                I              sig=rst_ps7_0_fclk0_peripheral_aresetn
+
+---- /video/hdmi_in/frontend/vtc_in
+     clk                          I              sig=video_hdmi_in_frontend_dvi2rgb_0_PixelClk
+     clken                        I              sig=
+     det_clken                    I              sig=
+     resetn                       I              sig=video_proc_sys_reset_pixelclk_peripheral_aresetn
+     s_axi_aclk                   I              sig=ps7_0_FCLK_CLK0
+     s_axi_aclken                 I              sig=
+     s_axi_aresetn                I              sig=rst_ps7_0_fclk0_peripheral_aresetn
+
+---- /video/hdmi_in/pixel_pack
+     ap_clk                       I              sig=ps7_0_FCLK_CLK1
+     ap_rst_n                     I              sig=rst_ps7_0_fclk1_peripheral_aresetn
+     stream_in_24_TDATA           I [24-1:0]     sig=video_hdmi_in_axis_register_slice_0_m_axis_tdata
+     stream_in_24_TKEEP           I [3-1:0]      sig=video_hdmi_in_axis_register_slice_0_m_axis_tkeep
+     stream_in_24_TLAST           I [1-1:0]      sig=video_hdmi_in_axis_register_slice_0_m_axis_tlast
+     stream_in_24_TREADY          O              sig=video_hdmi_in_axis_register_slice_0_m_axis_tready
+     stream_in_24_TUSER           I [1-1:0]      sig=video_hdmi_in_axis_register_slice_0_m_axis_tuser
+     stream_in_24_TVALID          I              sig=video_hdmi_in_axis_register_slice_0_m_axis_tvalid
+     stream_out_32_TDATA          O [32-1:0]     sig=video_axi_vdma_s_axis_s2mm_tdata
+     stream_out_32_TKEEP          O [4-1:0]      sig=video_axi_vdma_s_axis_s2mm_tkeep
+     stream_out_32_TLAST          O [1-1:0]      sig=video_axi_vdma_s_axis_s2mm_tlast
+     stream_out_32_TREADY         I              sig=video_axi_vdma_s_axis_s2mm_tready
+     stream_out_32_TUSER          O [1-1:0]      sig=video_axi_vdma_s_axis_s2mm_tuser
+     stream_out_32_TVALID         O              sig=video_axi_vdma_s_axis_s2mm_tvalid
+
+---- /video/hdmi_out/frontend/axi_dynclk
+     LOCKED_O                     O              sig=video_hdmi_out_frontend_axi_dynclk_LOCKED_O
+     PXL_CLK_5X_O                 O              sig=video_hdmi_out_frontend_axi_dynclk_PXL_CLK_5X_O
+     PXL_CLK_O                    O              sig=video_hdmi_out_frontend_axi_dynclk_PXL_CLK_O
+     REF_CLK_I                    I              sig=ps7_0_FCLK_CLK0
+     s00_axi_aclk                 I              sig=ps7_0_FCLK_CLK0
+     s00_axi_aresetn              I              sig=rst_ps7_0_fclk0_peripheral_aresetn
+
+---- /video/hdmi_out/frontend/hdmi_out_hpd_video
+     gpio_io_o                    O [1-1:0]      sig=video_hdmi_out_frontend_hdmi_out_hpd_video_gpio_io_o
+     s_axi_aclk                   I              sig=ps7_0_FCLK_CLK0
+     s_axi_aresetn                I              sig=rst_ps7_0_fclk0_peripheral_aresetn
+
+---- /video/hdmi_out/frontend/rgb2dvi_0
+     PixelClk                     I              sig=video_hdmi_out_frontend_axi_dynclk_PXL_CLK_O
+     SerialClk                    I              sig=video_hdmi_out_frontend_axi_dynclk_PXL_CLK_5X_O
+     TMDS_Clk_n                   O              sig=video_hdmi_out_frontend_rgb2dvi_0_TMDS_Clk_n
+     TMDS_Clk_p                   O              sig=video_hdmi_out_frontend_rgb2dvi_0_TMDS_Clk_p
+     TMDS_Data_n                  O [3-1:0]      sig=video_hdmi_out_frontend_rgb2dvi_0_TMDS_Data_n
+     TMDS_Data_p                  O [3-1:0]      sig=video_hdmi_out_frontend_rgb2dvi_0_TMDS_Data_p
+     aRst_n                       I              sig=video_hdmi_out_frontend_axi_dynclk_LOCKED_O
+     vid_pHSync                   I              sig=video_hdmi_out_frontend_color_swap_0_hsync_out
+     vid_pVDE                     I              sig=video_hdmi_out_frontend_color_swap_0_vde_out
+     vid_pVSync                   I              sig=video_hdmi_out_frontend_color_swap_0_vsync_out
+
+---- /video/hdmi_out/frontend/v_axi4s_vid_out_0
+     aclk                         I              sig=ps7_0_FCLK_CLK1
+     aclken                       I              sig=
+     aresetn                      I              sig=
+     locked                       O              sig=
+     s_axis_video_tdata           I [24-1:0]     sig=video_hdmi_out_color_convert_stream_out_24_TDATA
+     s_axis_video_tlast           I              sig=video_hdmi_out_color_convert_stream_out_24_TLAST
+     s_axis_video_tready          O              sig=video_hdmi_out_color_convert_stream_out_24_TREADY
+     s_axis_video_tuser           I              sig=video_hdmi_out_color_convert_stream_out_24_TUSER
+     s_axis_video_tvalid          I              sig=video_hdmi_out_color_convert_stream_out_24_TVALID
+     vid_data                     O [24-1:0]     sig=video_hdmi_out_frontend_color_swap_0_pixel_in
+     vid_io_out_ce                I              sig=
+     vid_io_out_clk               I              sig=video_hdmi_out_frontend_axi_dynclk_PXL_CLK_O
+     vtg_ce                       O              sig=
+
+---- /video/hdmi_out/frontend/vtc_out
+     clk                          I              sig=video_hdmi_out_frontend_axi_dynclk_PXL_CLK_O
+     clken                        I              sig=
+     gen_clken                    I              sig=
+     resetn                       I              sig=
+     s_axi_aclk                   I              sig=ps7_0_FCLK_CLK0
+     s_axi_aclken                 I              sig=
+     s_axi_aresetn                I              sig=rst_ps7_0_fclk0_peripheral_aresetn
+
+==============================================================================
+4) raw <NETS> 区（如果上面 SIGNAME 全空，看这里）
+==============================================================================
+   没有 <NETS> 段
+   root 下所有 tag: ADDRESSBLOCK ADDRESSBLOCKS BUSINTERFACE BUSINTERFACES CONNECTION CONNECTIONS DOCUMENT DOCUMENTS EDKSYSTEM EXTERNALINTERFACES EXTERNALPORTS FIELD FIELDS MEMORYMAP MEMRANGE MODULE MODULES PARAMETER PARAMETERS PERIPHERAL PERIPHERALS PORT PORTMAP PORTMAPS PORTS PROPERTY REGISTER REGISTERS SYSTEMINFO
+   ---- <BUSINTERFACES> 片段 ----
+<BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="axi_interconnect_0_M00_AXI" DATAWIDTH="32" NAME="S_AXI_in" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
+          <PARAMETER NAME="ADDR_WIDTH" VALUE="29"/>
+          <PARAMETER NAME="ARUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="AWUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="base_ps7_0_0_FCLK_CLK0"/>
+          <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
+          <PARAMETER NAME="HAS_BURST" VALUE="1"/>
+          <PARAMETER NAME="HAS_CACHE" VALUE="1"/>
+          <PARAMETER NAME="HAS_LOCK" VALUE="1"/>
+          <PARAMETER NAME="HAS_PROT" VALUE="1"/>
+          <PARAMETER NAME="HAS_QOS" VALUE="1"/>
+          <PARAMETER NAME="HAS_REGION" VALUE="1"/>
+          <PARAMETER NAME="HAS_RRESP" VALUE="1"/>
+          <PARAMETER NAME="HAS_WSTRB" VALUE="1"/>
+          <PARAMETER NAME="ID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
+          <PARAMETER NAME="MAX_BURST_LENGTH" VALUE="1"/>
+          <PARAMETER NAME="NUM_READ_OUTSTANDING" VALUE="2"/>
+          <PARAMETER NAME="NUM_READ_THREADS" VALUE="1"/>
+          <PARAMETER NAME="NUM_WRITE_OUTSTANDING" VALUE="2"/>
+          <PARAMETER NAME="NUM_WRITE_THREADS" VALUE="1"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
+          <PARAMETER NAME="PROTOCOL" VALUE="AXI4"/>
+          <PARAMETER NAME="READ_WRITE_MODE" VALUE="READ_WRITE"/>
+          <PARAMETER NAME="RUSER_BITS_PER_BYTE" VALUE="0"/>
+          <PARAMETER NAME="RUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="SUPPORTS_NARROW_BURST" VALUE="0"/>
+          <PARAMETER NAME="WIZ_DATA_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="WIZ_MEMORY_SIZE" VALUE="64"/>
+          <PARAMETER NAME="WUSER_BITS_PER_BYTE" VALUE="0"/>
+          <PARAMETER NAME="WUSER_WIDTH" VALUE="0"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="ARADDR" PHYSICAL="s_axi_in_araddr"/>
+            <PORTMAP LOGICAL="ARBURST" PHYSICAL="s_axi_in_arburst"/>
+            <PORTMAP LOGICAL="ARCACHE" PHYSICAL="s_axi_in_arcache"/>
+            <PORTMAP LOGICAL="ARLEN" PHYSICAL="s_axi_in_arlen"/>
+            <PORTMAP LOGICAL="ARLOCK" PHYSICAL="s_axi_in_arlock"/>
+            <PORTMAP LOGICAL="ARPROT" PHYSICAL="s_axi_in_arprot"/>
+            <PORTMAP LOGICAL="ARQOS" PHYSICAL="s_axi_in_arqos"/>
+            <PORTMAP LOGICAL="ARREADY" PHYSICAL="s_axi_in_arready"/>
+            <PORTMAP LOGICAL="ARREGION" PHYSICAL="s_axi_in_arregion"/>
+            <PORTMAP LOGICAL="ARSIZE" PHYSICAL="s_axi_in_arsize"/>
+            <PORTMAP LOGICAL="ARVALID" PHYSICAL="s_axi_in_arvalid"/>
+            <PORTMAP LOGICAL="AWADDR" PHYSICAL="s_axi_in_awaddr"/>
+            <PORTMAP LOGICAL="AWBURST" PHYSICAL="s_axi_in_awburst"/>
+            <PORTMAP LOGICAL="AWCACHE" PHYSICAL="s_axi_in_awcache"/>
+            <PORTMAP LOGICAL="AWLEN" PHYSICAL="s_axi_in_awlen"/>
+            <PORTMAP LOGICAL="AWLOCK" PHYSICAL="s_axi_in_awlock"/>
+            <PORTMAP LOGICAL="AWPROT" PHYSICAL="s_axi_in_awprot"/>
+            <PORTMAP LOGICAL="AWQOS" PHYSICAL="s_axi_in_awqos"/>
+            <PORTMAP LOGICAL="AWREADY" PHYSICAL="s_axi_in_awready"/>
+            <PORTMAP LOGICAL="AWREGION" PHYSICAL="s_axi_in_awregion"/>
+            <PORTMAP LOGICAL="AWSIZE" PHYSICAL="s_axi_in_awsize"/>
+            <PORTMAP LOGICAL="AWVALID" PHYSICAL="s_axi_in_awvalid"/>
+            <PORTMAP LOGICAL="BREADY" PHYSICAL="s_axi_in_bready"/>
+            <PORTMAP LOGICAL="BRESP" PHYSICAL="s_axi_in_bresp"/>
+            <PORTMAP LOGICAL="BVALID" PHYSICAL="s_axi_in_bvalid"/>
+            <PORTMAP LOGICAL="RDATA" PHYSICAL="s_axi_in_rdata"/>
+            <PORTMAP LOGICAL="RLAST" PHYSICAL="s_axi_in_rlast"/>
+            <PORTMAP LOGICAL="RREADY" PHYSICAL="s_axi_in_rready"/>
+            <PORTMAP LOGICAL="RRESP" PHYSICAL="s_axi_in_rresp"/>
+            <PORTMAP LOGICAL="RVALID" PHYSICAL="s_axi_in_rvalid"/>
+       

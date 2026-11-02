@@ -1,0 +1,14 @@
+[Unit]
+Description=PYNQ magnetic-field demo (auto bit + input + game)
+After=multi-user.target
+# 不强制等网络：手机 serve 起得来就行；键盘/HDMI/串口屏都不依赖网络
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/xilinx/wp
+ExecStart=/home/xilinx/wp/start_demo.sh
+Restart=on-failure
+RestartSec=15
+# 不让 systemd 自己抢在 150s 窗口里拉：脚本内部会等
+[Install]
+WantedBy=multi-user.target

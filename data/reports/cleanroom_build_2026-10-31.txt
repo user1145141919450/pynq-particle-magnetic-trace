@@ -1,0 +1,15 @@
+=== 2023.2 净室全量构建证据（2026-10-31）===
+环境：Vivado 2023.2；只拷源码（无 proj/、无板卡文件）到全新目录
+命令：vivado -mode batch -source build_project.tcl
+
+WARN: board_part 设置失败（PS7 preset �?能不�?甡��?: ERROR: [Board 49-71] The board_part definition was not found for tul.com.tw:pynq-z2:part0:1.0. The project's board_part property was not set, but the project's part property was set to xc7z020clg400-1. Valid board_part values can be retrieved with the 'get_board_parts' Tcl command. Check if board.repoPaths parameter is set and the board_part is installed from the tcl app store.
+WARNING: [Boardtcl 53-1] No current board_part set.
+###     puts "INFO: PS7 preset 应用完成（终态失�? $n_bad �?�?"
+INFO: PS7 preset 应用完成（终态失�? 1 �?�?
+## puts "INFO: ★时序门禁★ WNS=${wns}ns  WHS=${whs}ns"
+INFO: ★时序门禁★ WNS=0.112ns  WHS=0.006ns
+# puts "DONE: bit 已生�? -> $bit"
+DONE: bit 已生�? -> D:/Desktop/PYNQ/_cleanroom2_20261031/vivado/ov5640_pynq/proj/ov5640_m1a.runs/impl_1/ov5640_m1a_wrapper.bit
+
+备注：门禁通过后、deploy 拷贝步骤因测试夹具缺 software/pc/vision_golden.py 报错；
+      正式源码树包含该文件（build_project 的 deploy 步骤是打包，不影响 bit 产出）。

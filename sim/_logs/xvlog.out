@@ -1,0 +1,10 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Desktop/PYNQ/pynq-magnetic-field-demo/vivado/ov5640_pynq/rtl/v3_bundle/traj_lane.v" into library work
+INFO: [VRFC 10-311] analyzing module traj_lane
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Desktop/PYNQ/pynq-magnetic-field-demo/vivado/ov5640_pynq/rtl/v3_bundle/traj_bundle.v" into library work
+INFO: [VRFC 10-311] analyzing module traj_bundle
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Desktop/PYNQ/pynq-magnetic-field-demo/vivado/ov5640_pynq/rtl/v3_bundle/v3_bundle_axi.v" into library work
+INFO: [VRFC 10-311] analyzing module v3_bundle_axi
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Desktop/PYNQ/pynq-magnetic-field-demo/vivado/ov5640_pynq/rtl/v3_bundle/tb_traj_bundle.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_traj_bundle
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Desktop/PYNQ/pynq-magnetic-field-demo/vivado/ov5640_pynq/rtl/v3_bundle/tb_v3_bundle_axi.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_v3_bundle_axi

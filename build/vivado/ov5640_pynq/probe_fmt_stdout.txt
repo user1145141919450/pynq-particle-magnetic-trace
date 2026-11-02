@@ -1,0 +1,125 @@
+ECHO ���ڹر�״̬��
+ECHO ���ڹر�״̬��
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source probe_fmt.tcl
+# set here [file dirname [file normalize [info script]]]
+# set pdir $here/probe_fmt
+# file delete -force $pdir
+# file mkdir $pdir
+# create_project probe_fmt $pdir -part xc7z020clg400-1 -force
+# create_bd_design fmt
+Wrote  : <E:\pynq-magnetic-field-demo\vivado\ov5640_pynq\probe_fmt\probe_fmt.srcs\sources_1\bd\fmt\fmt.bd> 
+# current_bd_design fmt
+# create_bd_cell -type ip -vlnv xilinx.com:ip:v_axi4s_vid_out:4.0 v_ref
+# set c [get_bd_cells v_ref]
+# puts "=== 1) 三个格式参数�?**允�?��?**（IP �?己�?�的，不�?我猜的）==="
+=== 1) 三个格式参数�?**允�?��?**（IP �?己�?�的，不�?我猜的）===
+# foreach p {CONFIG.C_S_AXIS_VIDEO_FORMAT CONFIG.C_S_AXIS_VIDEO_DATA_WIDTH \
+#            CONFIG.C_NATIVE_COMPONENT_WIDTH CONFIG.C_PIXELS_PER_CLOCK} {
+#     if {[catch { set av [list_property_value $p $c] } e]} { set av "(取不刡�: $e)" }
+#     puts "   $p 当前=[get_property $p $c]  允�??=$av"
+# }
+   CONFIG.C_S_AXIS_VIDEO_FORMAT 当前=2  允�??=
+   CONFIG.C_S_AXIS_VIDEO_DATA_WIDTH 当前=8  允�??=
+   CONFIG.C_NATIVE_COMPONENT_WIDTH 当前=8  允�??=
+   CONFIG.C_PIXELS_PER_CLOCK 当前=1  允�??=
+# puts ""
+
+# puts "=== 2) �?一遍组合，看哪种能�? 32 位输�? ==="
+=== 2) �?一遍组合，看哪种能�? 32 位输�? ===
+# set i 0
+# foreach fmt {0 1 2 3 4 5 6} {
+#     foreach dw {8 10 12 16} {
+#         set n "v_${fmt}_${dw}"
+#         set err [catch {
+#             create_bd_cell -type ip -vlnv xilinx.com:ip:v_axi4s_vid_out:4.0 $n
+#             set_property -dict [list CONFIG.C_S_AXIS_VIDEO_FORMAT $fmt \
+#                                      CONFIG.C_S_AXIS_VIDEO_DATA_WIDTH $dw] [get_bd_cells $n]
+#         } emsg]
+#         if {$err} {
+#             # 组合非法�?正常的，不刷�?
+#             catch { delete_bd_objs [get_bd_cells $n] }
+#             continue
+#         }
+#         set cc [get_bd_cells $n]
+#         set gf [get_property CONFIG.C_S_AXIS_VIDEO_FORMAT $cc]
+#         set gd [get_property CONFIG.C_S_AXIS_VIDEO_DATA_WIDTH $cc]
+#         set l  [get_property LEFT [get_bd_pins $n/s_axis_video_tdata]]
+#         set bits [expr {$l + 1}]
+#         set vl [get_property LEFT [get_bd_pins $n/vid_data]]
+#         set vbits [expr {$vl + 1}]
+#         puts "   format=$fmt data_width=$dw -> 实得 format=$gf dw=$gd  s_axis=[format %3d $bits]�?  vid_data=$vbits �?"
+#         incr i
+#     }
+# }
+   format=0 data_width=8 -> 实得 format=0 dw=8  s_axis= 16�?  vid_data=16 �?
+   format=0 data_width=10 -> 实得 format=0 dw=10  s_axis= 24�?  vid_data=16 �?
+   format=0 data_width=12 -> 实得 format=0 dw=12  s_axis= 24�?  vid_data=16 �?
+   format=0 data_width=16 -> 实得 format=0 dw=16  s_axis= 32�?  vid_data=16 �?
+   format=1 data_width=8 -> 实得 format=1 dw=8  s_axis= 24�?  vid_data=24 �?
+   format=1 data_width=10 -> 实得 format=1 dw=10  s_axis= 32�?  vid_data=24 �?
+   format=1 data_width=12 -> 实得 format=1 dw=12  s_axis= 40�?  vid_data=24 �?
+   format=1 data_width=16 -> 实得 format=1 dw=16  s_axis= 48�?  vid_data=24 �?
+   format=2 data_width=8 -> 实得 format=2 dw=8  s_axis= 24�?  vid_data=24 �?
+   format=2 data_width=10 -> 实得 format=2 dw=10  s_axis= 32�?  vid_data=24 �?
+   format=2 data_width=12 -> 实得 format=2 dw=12  s_axis= 40�?  vid_data=24 �?
+   format=2 data_width=16 -> 实得 format=2 dw=16  s_axis= 48�?  vid_data=24 �?
+   format=3 data_width=8 -> 实得 format=3 dw=8  s_axis= 16�?  vid_data=16 �?
+   format=3 data_width=10 -> 实得 format=3 dw=10  s_axis= 24�?  vid_data=16 �?
+   format=3 data_width=12 -> 实得 format=3 dw=12  s_axis= 24�?  vid_data=16 �?
+   format=3 data_width=16 -> 实得 format=3 dw=16  s_axis= 32�?  vid_data=16 �?
+   format=4 data_width=8 -> 实得 format=4 dw=8  s_axis= 24�?  vid_data=24 �?
+   format=4 data_width=10 -> 实得 format=4 dw=10  s_axis= 32�?  vid_data=24 �?
+   format=4 data_width=12 -> 实得 format=4 dw=12  s_axis= 40�?  vid_data=24 �?
+   format=4 data_width=16 -> 实得 format=4 dw=16  s_axis= 48�?  vid_data=24 �?
+   format=5 data_width=8 -> 实得 format=5 dw=8  s_axis= 32�?  vid_data=32 �?
+   format=5 data_width=10 -> 实得 format=5 dw=10  s_axis= 40�?  vid_data=32 �?
+   format=5 data_width=12 -> 实得 format=5 dw=12  s_axis= 48�?  vid_data=32 �?
+   format=5 data_width=16 -> 实得 format=5 dw=16  s_axis= 64�?  vid_data=32 �?
+   format=6 data_width=8 -> 实得 format=6 dw=8  s_axis= 32�?  vid_data=32 �?
+   format=6 data_width=10 -> 实得 format=6 dw=10  s_axis= 40�?  vid_data=32 �?
+   format=6 data_width=12 -> 实得 format=6 dw=12  s_axis= 48�?  vid_data=32 �?
+   format=6 data_width=16 -> 实得 format=6 dw=16  s_axis= 64�?  vid_data=32 �?
+# puts "   （合法的组合兡� $i 种）"
+   （合法的组合兡� 28 种）
+# puts ""
+
+# puts "=== 3) 32�?24 直连到底怎么接的（实证，不靠猜）==="
+=== 3) 32�?24 直连到底怎么接的（实证，不靠猜）===
+# if {[catch {
+#     create_bd_cell -type ip -vlnv xilinx.com:ip:axi_vdma:6.3 vd
+#     set_property -dict [list CONFIG.c_include_mm2s {1} CONFIG.c_include_s2mm {0} \
+#         CONFIG.c_m_axi_mm2s_data_width {32} CONFIG.c_m_axis_mm2s_tdata_width {32}] [get_bd_cells vd]
+#     create_bd_cell -type ip -vlnv xilinx.com:ip:v_axi4s_vid_out:4.0 v24
+#     connect_bd_intf_net [get_bd_intf_pins vd/M_AXIS_MM2S] [get_bd_intf_pins v24/video_in]
+#     puts "   两边�? tdata 位�?�：VDMA=[expr {[get_property LEFT [get_bd_pins vd/m_axis_mm2s_tdata]]+1}]  vid_out=[expr {[get_property LEFT [get_bd_pins v24/s_axis_video_tdata]]+1}]"
+#     puts "   两边 tkeep 位�?�：VDMA=[expr {[get_property LEFT [get_bd_pins vd/m_axis_mm2s_tkeep]]+1}]  vid_out=[expr {[get_property LEFT [get_bd_pins v24/s_axis_video_tkeep]]+1}]"
+#     puts "   ---- 试着看引脚上挂的 net（Vivado �?己怎么接的�?----"
+#     foreach pin [get_bd_pins -of_objects [get_bd_cells v24]] {
+#         set pn [get_property NAME $pin]
+#         if {![string match "*tdata*" $pn] && ![string match "*tkeep*" $pn]} { continue }
+#         set net [get_bd_nets -quiet -of_objects $pin]
+#         puts "   $pn  net=$net"
+#     }
+# } e]} { puts "   直连测试失败: [string map {\n { }} $e]" }
+   两边�? tdata 位�?�：VDMA=32  vid_out=24
+WARNING: [BD 5-235] No pins matched 'get_bd_pins v24/s_axis_video_tkeep'
+   直连测试失败: ERROR: [Common 17-55] 'get_property' expects at least one object. Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object. 
+# puts ""
+
+# puts "=== 4) v_pixel_pack 在不圡�（PYNQ 老版�?用的那个宽度适配噡��?==="
+=== 4) v_pixel_pack 在不圡�（PYNQ 老版�?用的那个宽度适配噡��?===
+WARNING: [Coretcl 2-175] No Catalog IPs found
+# set pp [get_ipdefs -all *v_pixel_pack*]
+# puts "   get_ipdefs *v_pixel_pack* -> $pp"
+   get_ipdefs *v_pixel_pack* -> 
+# puts "DONE"
+DONE
+INFO: [Common 17-206] Exiting Vivado at Wed Sep 30 01:49:10 2026...

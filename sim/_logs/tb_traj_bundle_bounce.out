@@ -1,0 +1,38 @@
+
+****** xsim v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_traj_bundle_bounce/xsim_script.tcl
+# xsim {tb_traj_bundle_bounce} -testplusarg CASE=bounce -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+=== V3 并行轨迹束 自检开始（向量目录 sim/v3/bounce/blk_tab.mem）===
+
+==== case sim/v3/bounce/blk_tab.mem ====  x0=76800 y0=58880 steps=2000 bounce=2 holes=2 side=0
+  扫完 17 路用了 266701 周期（100MHz 下 = 2667.0 us），轨迹点 5458 个
+  路  0  OK  res=1 终点(243137,29383) 步数=441
+  路  1  OK  res=1 终点(243052,26996) 步数=439
+  路  2  OK  res=2 终点(141766,135424) 步数=794
+  路  3  OK  res=2 终点(143189,135424) 步数=794
+  路  4  OK  res=2 终点(144515,135424) 步数=795
+  路  5  OK  res=2 终点(146420,135424) 步数=795
+  路  6  OK  res=2 终点(147887,135424) 步数=796
+  路  7  OK  res=2 终点(150023,135424) 步数=796
+  路  8  OK  res=2 终点(152470,135424) 步数=797
+  路  9  OK  res=2 终点(154812,135424) 步数=797
+  路 10  OK  res=2 终点(149077,135424) 步数=810
+  路 11  OK  res=2 终点(137063,135424) 步数=832
+  路 12  OK  res=2 终点(122277,135424) 步数=859
+  路 13  OK  res=2 终点(100740,135424) 步数=895
+  路 14  OK  res=2 终点(61261,135424) 步数=964
+  路 15  OK  res=2 终点(18628,135424) 步数=1047
+  路 16  OK  res=2 终点(2816,128875) 步数=1073
+
+>>> PASS：17 路结果与定点黄金模型逐位一致
+$finish called at time : 2667115 ns : File "D:/Desktop/PYNQ/pynq-magnetic-field-demo/vivado/ov5640_pynq/rtl/v3_bundle/tb_traj_bundle.v" Line 333
+exit
+INFO: [Common 17-206] Exiting xsim at Tue Oct 27 18:04:35 2026...

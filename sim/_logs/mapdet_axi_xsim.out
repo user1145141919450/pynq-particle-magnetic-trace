@@ -1,0 +1,31 @@
+
+****** xsim v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_map_detect_axi/xsim_script.tcl
+# xsim {tb_map_detect_axi} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+  STATUS after en = 0x00000008
+  done 轮询用了 65464 次
+  SEQ=1 MEDVHI={vhi=72,med=132} R=21 B=115 K=716 N_CAND=9 VER=0x00020000
+  cand[0] cls=0 area=19 sx=1756 sy=971
+  cand[1] cls=1 area=19 sx=1569 sy=321
+  cand[2] cls=1 area=22 sx=1560 sy=1586
+  cand[3] cls=1 area=23 sx=1426 sy=1675
+  cand[4] cls=2 area=14 sx=24 sy=19
+  cand[5] cls=2 area=417 sx=48427 sy=11793
+  cand[6] cls=2 area=6 sx=759 sy=168
+  cand[7] cls=2 area=25 sx=3058 sy=1856
+  cand[8] cls=2 area=52 sx=6058 sy=4478
+  STATUS after W1C = 0x00000008
+------------------------------------------------------------
+>>> PASS map_detect_axi（AXI 全路径 + 真实快照）
+------------------------------------------------------------
+$finish called at time : 2677825 ns : File "D:/Desktop/PYNQ/pynq-magnetic-field-demo/vivado/ov5640_pynq/rtl/map_detect/tb_map_detect_axi.v" Line 170
+exit
+INFO: [Common 17-206] Exiting xsim at Thu Oct 22 21:10:04 2026...

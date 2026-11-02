@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L9,3 L0,6 z" fill="#334155"/>
+    </marker>
+    <style>
+      .box { fill:#f8fafc; stroke:#334155; stroke-width:1.5; rx:10; }
+      .g { fill:#dcfce7; stroke:#15803d; stroke-width:1.5; rx:10; }
+      .b { fill:#dbeafe; stroke:#1d4ed8; stroke-width:1.5; rx:10; }
+      .o { fill:#ffedd5; stroke:#c2410c; stroke-width:1.5; rx:10; }
+      .t { fill:#0f172a; font-size:14px; }
+      .tb { fill:#0f172a; font-size:16px; font-weight:700; }
+      .ts { fill:#334155; font-size:12.5px; }
+      .line { stroke:#334155; stroke-width:2; fill:none; marker-end:url(#a); }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1200" height="620" fill="#ffffff"/>
+  <text x="600" y="34" text-anchor="middle" class="tb" font-size="21">Three-layer verification: one golden model, three levels</text>
+  <text x="600" y="58" text-anchor="middle" class="ts">Each level compares against the same fixed-point Python reference; a mismatch is located to pixel / substep / register.</text>
+
+  <!-- Layer 0: golden model -->
+  <rect x="390" y="86" width="420" height="96" class="g"/>
+  <text x="600" y="114" text-anchor="middle" class="tb">Python golden model (fixed-point)</text>
+  <text x="600" y="136" text-anchor="middle" class="ts">v3_fixedpoint.py / pe_fix.py / line_engine_check.py</text>
+  <text x="600" y="156" text-anchor="middle" class="ts">exports expected values: endpoints, events, pixels, candidates</text>
+  <text x="600" y="174" text-anchor="middle" class="ts">single source of truth for all three levels</text>
+
+  <!-- arrows down -->
+  <line x1="600" y1="182" x2="600" y2="222" class="line"/>
+
+  <!-- Three columns -->
+  <rect x="60" y="226" width="320" height="250" class="b"/>
+  <text x="220" y="254" text-anchor="middle" class="tb">1. RTL simulation (xsim)</text>
+  <text x="80" y="282" class="ts">tb_v3_bundle_axi / tb_traj_phys</text>
+  <text x="80" y="302" class="ts">  17 rays, 6 modes + physics -> 17/17</text>
+  <text x="80" y="322" class="ts">tb_particle_engine / tb_pe_axi</text>
+  <text x="80" y="342" class="ts">  2000 substeps, spawn / goal / collide</text>
+  <text x="80" y="362" class="ts">tb_map_detect / run_map_detect_sim.sh</text>
+  <text x="80" y="382" class="ts">  9/9 candidates match OpenCV</text>
+  <text x="80" y="402" class="ts">tb_line_engine / line_engine_check.py</text>
+  <text x="80" y="422" class="ts">  3523 pixels bit-exact</text>
+  <text x="80" y="442" class="ts">tb_frame_pump: identity / 2x / clamp</text>
+
+  <rect x="440" y="226" width="320" height="250" class="o"/>
+  <text x="600" y="254" text-anchor="middle" class="tb">2. PC offline bench</text>
+  <text x="460" y="282" class="ts">link_boot_selftest.py</text>
+  <text x="460" y="302" class="ts">  489 checks / 489 pass</text>
+  <text x="460" y="322" class="ts">covers seven link failure classes:</text>
+  <text x="460" y="342" class="ts">  wild DMA, torn image, bad line length,</text>
+  <text x="460" y="362" class="ts">  frozen frame counter, VDMA errors, ...</text>
+  <text x="460" y="390" class="ts">deploy_check.py</text>
+  <text x="460" y="410" class="ts">  file list + per-file md5</text>
+  <text x="460" y="430" class="ts">check_submission_ready.py</text>
+  <text x="460" y="450" class="ts">  required files / no heavy dirs / no secrets</text>
+
+  <rect x="820" y="226" width="320" height="250" class="box"/>
+  <text x="980" y="254" text-anchor="middle" class="tb">3. On-board bit-exact</text>
+  <text x="840" y="282" class="ts">load_bit.py (only entry; pl_probe first)</text>
+  <text x="840" y="302" class="ts">v3_shoot.sh --cam -> 17/17</text>
+  <text x="840" y="322" class="ts">particle_pl.py probe -> P1-P5</text>
+  <text x="840" y="342" class="ts">map_detect_compare.py -> 8/8</text>
+  <text x="840" y="362" class="ts">frame_pump_bench.py -> 0 / 921600</text>
+  <text x="840" y="382" class="ts">line_bench.py -> 3523 pixels</text>
+  <text x="840" y="402" class="ts">game_v3.sh -> 2.8-3.0 fps, no self-heal</text>
+  <text x="840" y="430" class="ts" font-weight="600">Every level uses the same expected values</text>
+
+  <!-- arrows between columns -->
+  <line x1="380" y1="350" x2="438" y2="350" class="line"/>
+  <line x1="760" y1="350" x2="818" y2="350" class="line"/>
+
+  <!-- Bottom gate row -->
+  <rect x="60" y="500" width="1080" height="82" class="g"/>
+  <text x="600" y="526" text-anchor="middle" class="tb">Build gate: timing_gate.tcl (WNS >= 0 and WHS >= 0) + finish_build.py (IP / address baseline)</text>
+  <text x="600" y="550" text-anchor="middle" class="ts">A violating bit is renamed .TIMING_FAILED and is never loaded. A missing IP or wrong address stops the build.</text>
+  <text x="600" y="570" text-anchor="middle" class="ts">Clean-room build (source only, no proj/): WNS +0.112 / WHS +0.006, bit generated.</text>
+</svg>

@@ -1,0 +1,146 @@
+# -*- coding: utf-8 -*-
+"""
+dynclk_tables.py —— axi_dynclk 配 MMCM 用的两张查表（自动生成，勿手改）
+
+由 software/pc/gen_dynclk_tables.py 从 software/pc/ref/pynq27_video_display.h
+解析而来。那份头文件取自 PYNQ 2.7 源码里 base overlay 自己用的同一份实现
+（pynq/lib/_pynq/_video/video_display.h）—— 也就是**这块板上跑通过**的那份。
+
+按 MMCM 反馈倍频 M 索引（fbmult-1，fbmult 取值 2..64）。
+★ 不要手抄这两张表：抄错一个 bit 的表现是'MMCM 锁不上(黑屏)'或
+  '锁上了但抖(偶发花屏)'，两种都会被误判成硬件问题。要改就改生成脚本再跑。
+"""
+
+LOCK_LOOKUP = (
+    0x31BE8FA401,
+    0x31BE8FA401,
+    0x423E8FA401,
+    0x5AFE8FA401,
+    0x73BE8FA401,
+    0x8C7E8FA401,
+    0x9CFE8FA401,
+    0xB5BE8FA401,  # M=8
+    0xCE7E8FA401,
+    0xE73E8FA401,
+    0xFFF84FA401,
+    0xFFF39FA401,
+    0xFFEEEFA401,
+    0xFFEBCFA401,
+    0xFFE8AFA401,
+    0xFFE71FA401,  # M=16
+    0xFFE3FFA401,
+    0xFFE26FA401,
+    0xFFE0DFA401,
+    0xFFDF4FA401,
+    0xFFDDBFA401,
+    0xFFDC2FA401,
+    0xFFDA9FA401,
+    0xFFD90FA401,  # M=24
+    0xFFD90FA401,
+    0xFFD77FA401,
+    0xFFD5EFA401,
+    0xFFD5EFA401,
+    0xFFD45FA401,
+    0xFFD45FA401,
+    0xFFD2CFA401,
+    0xFFD2CFA401,  # M=32
+    0xFFD2CFA401,
+    0xFFD13FA401,
+    0xFFD13FA401,
+    0xFFD13FA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,  # M=40
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,  # M=48
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,  # M=56
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,
+    0xFFCFAFA401,  # M=64
+)
+
+FILTER_LOOKUP_LOW = (
+    0b0001011111,
+    0b0001010111,
+    0b0001111011,
+    0b0001011011,
+    0b0001101011,
+    0b0001110011,
+    0b0001110011,
+    0b0001110011,  # M=8
+    0b0001110011,
+    0b0001001011,
+    0b0001001011,
+    0b0001001011,
+    0b0010110011,
+    0b0001010011,
+    0b0001010011,
+    0b0001010011,  # M=16
+    0b0001010011,
+    0b0001010011,
+    0b0001010011,
+    0b0001010011,
+    0b0001010011,
+    0b0001010011,
+    0b0001010011,
+    0b0001100011,  # M=24
+    0b0001100011,
+    0b0001100011,
+    0b0001100011,
+    0b0001100011,
+    0b0001100011,
+    0b0001100011,
+    0b0001100011,
+    0b0001100011,  # M=32
+    0b0001100011,
+    0b0001100011,
+    0b0001100011,
+    0b0001100011,
+    0b0001100011,
+    0b0010010011,
+    0b0010010011,
+    0b0010010011,  # M=40
+    0b0010010011,
+    0b0010010011,
+    0b0010010011,
+    0b0010010011,
+    0b0010010011,
+    0b0010010011,
+    0b0010010011,
+    0b0010100011,  # M=48
+    0b0010100011,
+    0b0010100011,
+    0b0010100011,
+    0b0010100011,
+    0b0010100011,
+    0b0010100011,
+    0b0010100011,
+    0b0010100011,  # M=56
+    0b0010100011,
+    0b0010100011,
+    0b0010100011,
+    0b0010100011,
+    0b0010100011,
+    0b0010100011,
+    0b0010100011,
+    0b0010100011,  # M=64
+)

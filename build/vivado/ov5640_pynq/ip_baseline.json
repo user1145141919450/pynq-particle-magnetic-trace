@@ -1,0 +1,86 @@
+{
+  "_comment": "工作版本（10-27/10-28 bit 949911fb）的 BD IP 地址基线。任何一次从零重建，生成的 hwh 必须包含这里每一个 IP 且地址相同；新增 IP 要显式写进 ALLOW_NEW。检查器：tools/check_ip_baseline.py",
+  "allow_missing": {},
+  "allow_new": {
+    "frame_pump_0": "2026-10-31 PL 帧泵（透视矫正+打包写显存），地址 0x43B40000",
+    "line_engine_top_0": "2026-10-30 PL 画线引擎（新增）"
+  },
+  "baseline": {
+    "axi_bram_ctrl_vision": {
+      "base": "0x43B00000",
+      "high": "0x43B07FFF"
+    },
+    "axi_dynclk": {
+      "base": "0x43C10000",
+      "high": "0x43C1FFFF"
+    },
+    "axi_gpio_probe0": {
+      "base": "0x43A00000",
+      "high": "0x43A0FFFF"
+    },
+    "axi_gpio_probe1": {
+      "base": "0x43A10000",
+      "high": "0x43A1FFFF"
+    },
+    "axi_gpio_probe2": {
+      "base": "0x43A20000",
+      "high": "0x43A2FFFF"
+    },
+    "axi_gpio_probe3": {
+      "base": "0x43A30000",
+      "high": "0x43A3FFFF"
+    },
+    "axi_gpio_probe4": {
+      "base": "0x43A40000",
+      "high": "0x43A4FFFF"
+    },
+    "axi_gpio_probe5": {
+      "base": "0x43A50000",
+      "high": "0x43A5FFFF"
+    },
+    "axi_gpio_probe6": {
+      "base": "0x43A60000",
+      "high": "0x43A6FFFF"
+    },
+    "axi_gpio_vision": {
+      "base": "0x43B10000",
+      "high": "0x43B1FFFF"
+    },
+    "axi_gpio_vstat": {
+      "base": "0x43B20000",
+      "high": "0x43B2FFFF"
+    },
+    "axi_vdma_0": {
+      "base": "0x43000000",
+      "high": "0x4300FFFF"
+    },
+    "axi_vdma_out": {
+      "base": "0x43C00000",
+      "high": "0x43C0FFFF"
+    },
+    "hdmi_out_hpd_video": {
+      "base": "0x43C30000",
+      "high": "0x43C3FFFF"
+    },
+    "map_detect_axi_0": {
+      "base": "0x40002000",
+      "high": "0x40002FFF"
+    },
+    "pe_axi_0": {
+      "base": "0x40001000",
+      "high": "0x40001FFF"
+    },
+    "processing_system7_0": {
+      "base": "0x00000000",
+      "high": "0x1FFFFFFF"
+    },
+    "v3_bundle_axi_0": {
+      "base": "0x40000000",
+      "high": "0x40000FFF"
+    },
+    "vtc_out": {
+      "base": "0x43C20000",
+      "high": "0x43C2FFFF"
+    }
+  }
+}

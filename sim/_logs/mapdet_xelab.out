@@ -1,0 +1,17 @@
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: F:/Xilinx/Vivado2023/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe tb_map_detect -s tb_map_detect 
+Multi-threading is on. Using 22 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-3645] port 'n_cand' remains unconnected for this instance [D:/Desktop/PYNQ/pynq-magnetic-field-demo/vivado/ov5640_pynq/rtl/map_detect/tb_map_detect.v:42]
+WARNING: [VRFC 10-5021] port 'cand_addr' is not connected on this instance [D:/Desktop/PYNQ/pynq-magnetic-field-demo/vivado/ov5640_pynq/rtl/map_detect/tb_map_detect.v:42]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.map_cc_default
+Compiling module work.map_detect_core(DEBUG=1)
+Compiling module work.tb_map_detect
+Built simulation snapshot tb_map_detect

@@ -1,0 +1,16 @@
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: F:/Xilinx/Vivado2023/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe -debug typical tb_v3_bundle_axi -s tb_v3_bundle_axi_fan 
+Multi-threading is on. Using 22 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.traj_lane
+Compiling module work.traj_bundle_default
+Compiling module work.v3_bundle_axi
+Compiling module work.tb_v3_bundle_axi
+Built simulation snapshot tb_v3_bundle_axi_fan

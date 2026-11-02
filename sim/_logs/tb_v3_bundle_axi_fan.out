@@ -1,0 +1,30 @@
+
+****** xsim v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_v3_bundle_axi_fan/xsim_script.tcl
+# xsim {tb_v3_bundle_axi_fan} -testplusarg CASE=fan -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+
+==== AXI 级自检 case=fan ====
+  [回读] X0=25600 (期望 25600)
+  [回读] Y0=69120 (期望 69120)
+  [回读] STEPS=120 (期望 120)
+  [回读] BALL_R=2816 (期望 2816)
+  [回读] FIELD_W=245760 (期望 245760)
+  [回读] FIELD_H=138240 (期望 138240)
+  [内部] blk_tab[0]   = 7fe2fd000000000780010e00   源 blk_mem[0] = 7fe2fd000000000780010e00
+  [内部] lane_v[0]    = 18c1bfc855 (期望 18c1bfc855)
+  [内部] lane_v[1]    = 18d05fcf41 (期望 18d05fcf41)
+  [内部] hole_tab[0]  = b0b0007f31
+  扫完 17 路，耗时 222 周期（100MHz 下 2.2 us）
+
+>>> PASS：AXI 写参数/读结果整条路径与黄金模型逐位一致
+$finish called at time : 403525 ns : File "D:/Desktop/PYNQ/pynq-magnetic-field-demo/vivado/ov5640_pynq/rtl/v3_bundle/tb_v3_bundle_axi.v" Line 190
+exit
+INFO: [Common 17-206] Exiting xsim at Tue Oct 27 18:04:48 2026...

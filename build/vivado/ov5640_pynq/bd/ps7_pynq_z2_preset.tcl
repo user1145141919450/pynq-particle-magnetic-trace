@@ -1,0 +1,604 @@
+# ============================================================================
+# ps7_pynq_z2_preset.tcl —— PYNQ-Z2 的 PS7 板卡 preset（**机器生成**，别手改）
+#
+# 由来（2026-10-30）：新机器没有 tul.com.tw:pynq-z2 板卡文件，
+#   `apply_board_preset 1` 没法用 ⇒ 从 2026-10-16 的 BD 备份（当时板卡 preset
+#   已生效、板上跑通的配置）里把 processing_system7_0 的全部 PCW 参数抽出来，
+#   在这边逐个 set_property 复刻。与老 preset 等价。
+# 生成：python 读 .bd(JSON) 的 components.processing_system7_0.parameters
+# ============================================================================
+proc ps7_apply_preset {cell} {
+    set kv {
+        PCW_ACT_APU_PERIPHERAL_FREQMHZ {650.000000}
+        PCW_ACT_CAN0_PERIPHERAL_FREQMHZ {23.8095}
+        PCW_ACT_CAN1_PERIPHERAL_FREQMHZ {23.8095}
+        PCW_ACT_CAN_PERIPHERAL_FREQMHZ {10.000000}
+        PCW_ACT_DCI_PERIPHERAL_FREQMHZ {10.096154}
+        PCW_ACT_ENET0_PERIPHERAL_FREQMHZ {125.000000}
+        PCW_ACT_ENET1_PERIPHERAL_FREQMHZ {10.000000}
+        PCW_ACT_FPGA0_PERIPHERAL_FREQMHZ {100.000000}
+        PCW_ACT_FPGA1_PERIPHERAL_FREQMHZ {10.000000}
+        PCW_ACT_FPGA2_PERIPHERAL_FREQMHZ {10.000000}
+        PCW_ACT_FPGA3_PERIPHERAL_FREQMHZ {10.000000}
+        PCW_ACT_I2C_PERIPHERAL_FREQMHZ {50}
+        PCW_ACT_PCAP_PERIPHERAL_FREQMHZ {200.000000}
+        PCW_ACT_QSPI_PERIPHERAL_FREQMHZ {200.000000}
+        PCW_ACT_SDIO_PERIPHERAL_FREQMHZ {50.000000}
+        PCW_ACT_SMC_PERIPHERAL_FREQMHZ {10.000000}
+        PCW_ACT_SPI_PERIPHERAL_FREQMHZ {10.000000}
+        PCW_ACT_TPIU_PERIPHERAL_FREQMHZ {200.000000}
+        PCW_ACT_TTC0_CLK0_PERIPHERAL_FREQMHZ {108.333336}
+        PCW_ACT_TTC0_CLK1_PERIPHERAL_FREQMHZ {108.333336}
+        PCW_ACT_TTC0_CLK2_PERIPHERAL_FREQMHZ {108.333336}
+        PCW_ACT_TTC1_CLK0_PERIPHERAL_FREQMHZ {108.333336}
+        PCW_ACT_TTC1_CLK1_PERIPHERAL_FREQMHZ {108.333336}
+        PCW_ACT_TTC1_CLK2_PERIPHERAL_FREQMHZ {108.333336}
+        PCW_ACT_TTC_PERIPHERAL_FREQMHZ {50}
+        PCW_ACT_UART_PERIPHERAL_FREQMHZ {100.000000}
+        PCW_ACT_USB0_PERIPHERAL_FREQMHZ {60}
+        PCW_ACT_USB1_PERIPHERAL_FREQMHZ {60}
+        PCW_ACT_WDT_PERIPHERAL_FREQMHZ {108.333336}
+        PCW_APU_CLK_RATIO_ENABLE {6:2:1}
+        PCW_APU_PERIPHERAL_FREQMHZ {650}
+        PCW_CAN0_PERIPHERAL_CLKSRC {External}
+        PCW_CAN0_PERIPHERAL_ENABLE {0}
+        PCW_CAN1_PERIPHERAL_CLKSRC {External}
+        PCW_CAN1_PERIPHERAL_ENABLE {0}
+        PCW_CAN_PERIPHERAL_CLKSRC {IO PLL}
+        PCW_CAN_PERIPHERAL_VALID {0}
+        PCW_CLK0_FREQ {100000000}
+        PCW_CLK1_FREQ {10000000}
+        PCW_CLK2_FREQ {10000000}
+        PCW_CLK3_FREQ {10000000}
+        PCW_CPU_CPU_6X4X_MAX_RANGE {667}
+        PCW_CPU_PERIPHERAL_CLKSRC {ARM PLL}
+        PCW_CRYSTAL_PERIPHERAL_FREQMHZ {50}
+        PCW_DCI_PERIPHERAL_CLKSRC {DDR PLL}
+        PCW_DCI_PERIPHERAL_FREQMHZ {10.159}
+        PCW_DDR_PERIPHERAL_CLKSRC {DDR PLL}
+        PCW_DDR_RAM_BASEADDR {0x00100000}
+        PCW_DDR_RAM_HIGHADDR {0x1FFFFFFF}
+        PCW_DM_WIDTH {4}
+        PCW_DQS_WIDTH {4}
+        PCW_DQ_WIDTH {32}
+        PCW_ENET0_BASEADDR {0xE000B000}
+        PCW_ENET0_ENET0_IO {MIO 16 .. 27}
+        PCW_ENET0_GRP_MDIO_ENABLE {1}
+        PCW_ENET0_GRP_MDIO_IO {MIO 52 .. 53}
+        PCW_ENET0_HIGHADDR {0xE000BFFF}
+        PCW_ENET0_PERIPHERAL_CLKSRC {IO PLL}
+        PCW_ENET0_PERIPHERAL_ENABLE {1}
+        PCW_ENET0_PERIPHERAL_FREQMHZ {1000 Mbps}
+        PCW_ENET0_RESET_ENABLE {1}
+        PCW_ENET0_RESET_IO {MIO 9}
+        PCW_ENET1_PERIPHERAL_CLKSRC {IO PLL}
+        PCW_ENET1_PERIPHERAL_ENABLE {0}
+        PCW_ENET_RESET_ENABLE {1}
+        PCW_ENET_RESET_POLARITY {Active Low}
+        PCW_ENET_RESET_SELECT {Share reset pin}
+        PCW_EN_4K_TIMER {0}
+        PCW_EN_CAN0 {0}
+        PCW_EN_CAN1 {0}
+        PCW_EN_CLK0_PORT {1}
+        PCW_EN_CLK1_PORT {0}
+        PCW_EN_CLK2_PORT {0}
+        PCW_EN_CLK3_PORT {0}
+        PCW_EN_CLKTRIG0_PORT {0}
+        PCW_EN_CLKTRIG1_PORT {0}
+        PCW_EN_CLKTRIG2_PORT {0}
+        PCW_EN_CLKTRIG3_PORT {0}
+        PCW_EN_DDR {1}
+        PCW_EN_EMIO_CAN0 {0}
+        PCW_EN_EMIO_CAN1 {0}
+        PCW_EN_EMIO_CD_SDIO0 {0}
+        PCW_EN_EMIO_CD_SDIO1 {0}
+        PCW_EN_EMIO_ENET0 {0}
+        PCW_EN_EMIO_ENET1 {0}
+        PCW_EN_EMIO_GPIO {0}
+        PCW_EN_EMIO_I2C0 {0}
+        PCW_EN_EMIO_I2C1 {0}
+        PCW_EN_EMIO_MODEM_UART0 {0}
+        PCW_EN_EMIO_MODEM_UART1 {0}
+        PCW_EN_EMIO_PJTAG {0}
+        PCW_EN_EMIO_SDIO0 {0}
+        PCW_EN_EMIO_SDIO1 {0}
+        PCW_EN_EMIO_SPI0 {0}
+        PCW_EN_EMIO_SPI1 {0}
+        PCW_EN_EMIO_SRAM_INT {0}
+        PCW_EN_EMIO_TRACE {0}
+        PCW_EN_EMIO_TTC0 {0}
+        PCW_EN_EMIO_TTC1 {0}
+        PCW_EN_EMIO_UART0 {0}
+        PCW_EN_EMIO_UART1 {0}
+        PCW_EN_EMIO_WDT {0}
+        PCW_EN_EMIO_WP_SDIO0 {0}
+        PCW_EN_EMIO_WP_SDIO1 {0}
+        PCW_EN_ENET0 {1}
+        PCW_EN_ENET1 {0}
+        PCW_EN_GPIO {1}
+        PCW_EN_I2C0 {0}
+        PCW_EN_I2C1 {0}
+        PCW_EN_MODEM_UART0 {0}
+        PCW_EN_MODEM_UART1 {0}
+        PCW_EN_PJTAG {0}
+        PCW_EN_PTP_ENET0 {0}
+        PCW_EN_PTP_ENET1 {0}
+        PCW_EN_QSPI {1}
+        PCW_EN_RST0_PORT {1}
+        PCW_EN_RST1_PORT {0}
+        PCW_EN_RST2_PORT {0}
+        PCW_EN_RST3_PORT {0}
+        PCW_EN_SDIO0 {1}
+        PCW_EN_SDIO1 {0}
+        PCW_EN_SMC {0}
+        PCW_EN_SPI0 {0}
+        PCW_EN_SPI1 {0}
+        PCW_EN_TRACE {0}
+        PCW_EN_TTC0 {0}
+        PCW_EN_TTC1 {0}
+        PCW_EN_UART0 {1}
+        PCW_EN_UART1 {0}
+        PCW_EN_USB0 {1}
+        PCW_EN_USB1 {0}
+        PCW_EN_WDT {0}
+        PCW_FCLK0_PERIPHERAL_CLKSRC {IO PLL}
+        PCW_FCLK1_PERIPHERAL_CLKSRC {IO PLL}
+        PCW_FCLK2_PERIPHERAL_CLKSRC {IO PLL}
+        PCW_FCLK3_PERIPHERAL_CLKSRC {IO PLL}
+        PCW_FCLK_CLK0_BUF {TRUE}
+        PCW_FPGA0_PERIPHERAL_FREQMHZ {100}
+        PCW_FPGA1_PERIPHERAL_FREQMHZ {50}
+        PCW_FPGA2_PERIPHERAL_FREQMHZ {50}
+        PCW_FPGA3_PERIPHERAL_FREQMHZ {50}
+        PCW_FPGA_FCLK0_ENABLE {1}
+        PCW_GP0_EN_MODIFIABLE_TXN {1}
+        PCW_GP0_NUM_READ_THREADS {4}
+        PCW_GP0_NUM_WRITE_THREADS {4}
+        PCW_GP1_EN_MODIFIABLE_TXN {1}
+        PCW_GP1_NUM_READ_THREADS {4}
+        PCW_GP1_NUM_WRITE_THREADS {4}
+        PCW_GPIO_BASEADDR {0xE000A000}
+        PCW_GPIO_EMIO_GPIO_ENABLE {0}
+        PCW_GPIO_HIGHADDR {0xE000AFFF}
+        PCW_GPIO_MIO_GPIO_ENABLE {1}
+        PCW_GPIO_MIO_GPIO_IO {MIO}
+        PCW_GPIO_PERIPHERAL_ENABLE {0}
+        PCW_I2C0_PERIPHERAL_ENABLE {0}
+        PCW_I2C1_PERIPHERAL_ENABLE {0}
+        PCW_I2C_RESET_ENABLE {1}
+        PCW_I2C_RESET_POLARITY {Active Low}
+        PCW_IMPORT_BOARD_PRESET {None}
+        PCW_INCLUDE_ACP_TRANS_CHECK {0}
+        PCW_MIO_0_IOTYPE {LVCMOS 3.3V}
+        PCW_MIO_0_PULLUP {enabled}
+        PCW_MIO_0_SLEW {slow}
+        PCW_MIO_10_IOTYPE {LVCMOS 3.3V}
+        PCW_MIO_10_PULLUP {enabled}
+        PCW_MIO_10_SLEW {slow}
+        PCW_MIO_11_IOTYPE {LVCMOS 3.3V}
+        PCW_MIO_11_PULLUP {enabled}
+        PCW_MIO_11_SLEW {slow}
+        PCW_MIO_12_IOTYPE {LVCMOS 3.3V}
+        PCW_MIO_12_PULLUP {enabled}
+        PCW_MIO_12_SLEW {slow}
+        PCW_MIO_13_IOTYPE {LVCMOS 3.3V}
+        PCW_MIO_13_PULLUP {enabled}
+        PCW_MIO_13_SLEW {slow}
+        PCW_MIO_14_IOTYPE {LVCMOS 3.3V}
+        PCW_MIO_14_PULLUP {enabled}
+        PCW_MIO_14_SLEW {slow}
+        PCW_MIO_15_IOTYPE {LVCMOS 3.3V}
+        PCW_MIO_15_PULLUP {enabled}
+        PCW_MIO_15_SLEW {slow}
+        PCW_MIO_16_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_16_PULLUP {enabled}
+        PCW_MIO_16_SLEW {slow}
+        PCW_MIO_17_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_17_PULLUP {enabled}
+        PCW_MIO_17_SLEW {slow}
+        PCW_MIO_18_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_18_PULLUP {enabled}
+        PCW_MIO_18_SLEW {slow}
+        PCW_MIO_19_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_19_PULLUP {enabled}
+        PCW_MIO_19_SLEW {slow}
+        PCW_MIO_1_IOTYPE {LVCMOS 3.3V}
+        PCW_MIO_1_PULLUP {enabled}
+        PCW_MIO_1_SLEW {slow}
+        PCW_MIO_20_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_20_PULLUP {enabled}
+        PCW_MIO_20_SLEW {slow}
+        PCW_MIO_21_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_21_PULLUP {enabled}
+        PCW_MIO_21_SLEW {slow}
+        PCW_MIO_22_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_22_PULLUP {enabled}
+        PCW_MIO_22_SLEW {slow}
+        PCW_MIO_23_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_23_PULLUP {enabled}
+        PCW_MIO_23_SLEW {slow}
+        PCW_MIO_24_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_24_PULLUP {enabled}
+        PCW_MIO_24_SLEW {slow}
+        PCW_MIO_25_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_25_PULLUP {enabled}
+        PCW_MIO_25_SLEW {slow}
+        PCW_MIO_26_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_26_PULLUP {enabled}
+        PCW_MIO_26_SLEW {slow}
+        PCW_MIO_27_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_27_PULLUP {enabled}
+        PCW_MIO_27_SLEW {slow}
+        PCW_MIO_28_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_28_PULLUP {enabled}
+        PCW_MIO_28_SLEW {slow}
+        PCW_MIO_29_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_29_PULLUP {enabled}
+        PCW_MIO_29_SLEW {slow}
+        PCW_MIO_2_IOTYPE {LVCMOS 3.3V}
+        PCW_MIO_2_SLEW {slow}
+        PCW_MIO_30_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_30_PULLUP {enabled}
+        PCW_MIO_30_SLEW {slow}
+        PCW_MIO_31_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_31_PULLUP {enabled}
+        PCW_MIO_31_SLEW {slow}
+        PCW_MIO_32_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_32_PULLUP {enabled}
+        PCW_MIO_32_SLEW {slow}
+        PCW_MIO_33_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_33_PULLUP {enabled}
+        PCW_MIO_33_SLEW {slow}
+        PCW_MIO_34_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_34_PULLUP {enabled}
+        PCW_MIO_34_SLEW {slow}
+        PCW_MIO_35_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_35_PULLUP {enabled}
+        PCW_MIO_35_SLEW {slow}
+        PCW_MIO_36_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_36_PULLUP {enabled}
+        PCW_MIO_36_SLEW {slow}
+        PCW_MIO_37_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_37_PULLUP {enabled}
+        PCW_MIO_37_SLEW {slow}
+        PCW_MIO_38_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_38_PULLUP {enabled}
+        PCW_MIO_38_SLEW {slow}
+        PCW_MIO_39_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_39_PULLUP {enabled}
+        PCW_MIO_39_SLEW {slow}
+        PCW_MIO_3_IOTYPE {LVCMOS 3.3V}
+        PCW_MIO_3_SLEW {slow}
+        PCW_MIO_40_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_40_PULLUP {enabled}
+        PCW_MIO_40_SLEW {slow}
+        PCW_MIO_41_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_41_PULLUP {enabled}
+        PCW_MIO_41_SLEW {slow}
+        PCW_MIO_42_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_42_PULLUP {enabled}
+        PCW_MIO_42_SLEW {slow}
+        PCW_MIO_43_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_43_PULLUP {enabled}
+        PCW_MIO_43_SLEW {slow}
+        PCW_MIO_44_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_44_PULLUP {enabled}
+        PCW_MIO_44_SLEW {slow}
+        PCW_MIO_45_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_45_PULLUP {enabled}
+        PCW_MIO_45_SLEW {slow}
+        PCW_MIO_46_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_46_PULLUP {enabled}
+        PCW_MIO_46_SLEW {slow}
+        PCW_MIO_47_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_47_PULLUP {enabled}
+        PCW_MIO_47_SLEW {slow}
+        PCW_MIO_48_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_48_PULLUP {enabled}
+        PCW_MIO_48_SLEW {slow}
+        PCW_MIO_49_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_49_PULLUP {enabled}
+        PCW_MIO_49_SLEW {slow}
+        PCW_MIO_4_IOTYPE {LVCMOS 3.3V}
+        PCW_MIO_4_SLEW {slow}
+        PCW_MIO_50_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_50_PULLUP {enabled}
+        PCW_MIO_50_SLEW {slow}
+        PCW_MIO_51_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_51_PULLUP {enabled}
+        PCW_MIO_51_SLEW {slow}
+        PCW_MIO_52_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_52_PULLUP {enabled}
+        PCW_MIO_52_SLEW {slow}
+        PCW_MIO_53_IOTYPE {LVCMOS 1.8V}
+        PCW_MIO_53_PULLUP {enabled}
+        PCW_MIO_53_SLEW {slow}
+        PCW_MIO_5_IOTYPE {LVCMOS 3.3V}
+        PCW_MIO_5_SLEW {slow}
+        PCW_MIO_6_IOTYPE {LVCMOS 3.3V}
+        PCW_MIO_6_SLEW {slow}
+        PCW_MIO_7_IOTYPE {LVCMOS 3.3V}
+        PCW_MIO_7_SLEW {slow}
+        PCW_MIO_8_IOTYPE {LVCMOS 3.3V}
+        PCW_MIO_8_SLEW {slow}
+        PCW_MIO_9_IOTYPE {LVCMOS 3.3V}
+        PCW_MIO_9_PULLUP {enabled}
+        PCW_MIO_9_SLEW {slow}
+        PCW_MIO_PRIMITIVE {54}
+        PCW_MIO_TREE_PERIPHERALS {['GPIO#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#GPIO#Quad SPI Flash#ENET Reset#GPIO#GPIO#GPIO#GPIO#UART 0#UART 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet', '0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#SD 0#SD 0#SD 0#SD 0#SD 0#SD 0#USB Reset#SD 0#GPIO#GPIO#GPIO#GPIO#Enet 0#Enet 0']}
+        PCW_MIO_TREE_SIGNALS {gpio[0]#qspi0_ss_b#qspi0_io[0]#qspi0_io[1]#qspi0_io[2]#qspi0_io[3]/HOLD_B#qspi0_sclk#gpio[7]#qspi_fbclk#reset#gpio[10]#gpio[11]#gpio[12]#gpio[13]#rx#tx#tx_clk#txd[0]#txd[1]#txd[2]#txd[3]#tx_ctl#rx_clk#rxd[0]#rxd[1]#rxd[2]#rxd[3]#rx_ctl#data[4]#dir#stp#nxt#data[0]#data[1]#data[2]#data[3]#clk#data[5]#data[6]#data[7]#clk#cmd#data[0]#data[1]#data[2]#data[3]#reset#cd#gpio[48]#gpio[49]#gpio[50]#gpio[51]#mdc#mdio}
+        PCW_M_AXI_GP0_ENABLE_STATIC_REMAP {0}
+        PCW_M_AXI_GP0_FREQMHZ {10}
+        PCW_M_AXI_GP0_ID_WIDTH {12}
+        PCW_M_AXI_GP0_SUPPORT_NARROW_BURST {0}
+        PCW_M_AXI_GP0_THREAD_ID_WIDTH {12}
+        PCW_NAND_CYCLES_T_AR {1}
+        PCW_NAND_CYCLES_T_CLR {1}
+        PCW_NAND_CYCLES_T_RC {11}
+        PCW_NAND_CYCLES_T_REA {1}
+        PCW_NAND_CYCLES_T_RR {1}
+        PCW_NAND_CYCLES_T_WC {11}
+        PCW_NAND_CYCLES_T_WP {1}
+        PCW_NOR_CS0_T_CEOE {1}
+        PCW_NOR_CS0_T_PC {1}
+        PCW_NOR_CS0_T_RC {11}
+        PCW_NOR_CS0_T_TR {1}
+        PCW_NOR_CS0_T_WC {11}
+        PCW_NOR_CS0_T_WP {1}
+        PCW_NOR_CS0_WE_TIME {0}
+        PCW_NOR_CS1_T_CEOE {1}
+        PCW_NOR_CS1_T_PC {1}
+        PCW_NOR_CS1_T_RC {11}
+        PCW_NOR_CS1_T_TR {1}
+        PCW_NOR_CS1_T_WC {11}
+        PCW_NOR_CS1_T_WP {1}
+        PCW_NOR_CS1_WE_TIME {0}
+        PCW_NOR_SRAM_CS0_T_CEOE {1}
+        PCW_NOR_SRAM_CS0_T_PC {1}
+        PCW_NOR_SRAM_CS0_T_RC {11}
+        PCW_NOR_SRAM_CS0_T_TR {1}
+        PCW_NOR_SRAM_CS0_T_WC {11}
+        PCW_NOR_SRAM_CS0_T_WP {1}
+        PCW_NOR_SRAM_CS0_WE_TIME {0}
+        PCW_NOR_SRAM_CS1_T_CEOE {1}
+        PCW_NOR_SRAM_CS1_T_PC {1}
+        PCW_NOR_SRAM_CS1_T_RC {11}
+        PCW_NOR_SRAM_CS1_T_TR {1}
+        PCW_NOR_SRAM_CS1_T_WC {11}
+        PCW_NOR_SRAM_CS1_T_WP {1}
+        PCW_NOR_SRAM_CS1_WE_TIME {0}
+        PCW_OVERRIDE_BASIC_CLOCK {0}
+        PCW_PACKAGE_DDR_BOARD_DELAY0 {0.279}
+        PCW_PACKAGE_DDR_BOARD_DELAY1 {0.260}
+        PCW_PACKAGE_DDR_BOARD_DELAY2 {0.085}
+        PCW_PACKAGE_DDR_BOARD_DELAY3 {0.092}
+        PCW_PACKAGE_DDR_DQS_TO_CLK_DELAY_0 {-0.051}
+        PCW_PACKAGE_DDR_DQS_TO_CLK_DELAY_1 {-0.006}
+        PCW_PACKAGE_DDR_DQS_TO_CLK_DELAY_2 {-0.009}
+        PCW_PACKAGE_DDR_DQS_TO_CLK_DELAY_3 {-0.033}
+        PCW_PACKAGE_NAME {clg400}
+        PCW_PCAP_PERIPHERAL_CLKSRC {IO PLL}
+        PCW_PCAP_PERIPHERAL_FREQMHZ {200}
+        PCW_PERIPHERAL_BOARD_PRESET {None}
+        PCW_PJTAG_PERIPHERAL_ENABLE {0}
+        PCW_PLL_BYPASSMODE_ENABLE {0}
+        PCW_PRESET_BANK0_VOLTAGE {LVCMOS 3.3V}
+        PCW_PRESET_BANK1_VOLTAGE {LVCMOS 1.8V}
+        PCW_PS7_SI_REV {PRODUCTION}
+        PCW_QSPI_GRP_FBCLK_ENABLE {1}
+        PCW_QSPI_GRP_FBCLK_IO {MIO 8}
+        PCW_QSPI_GRP_IO1_ENABLE {0}
+        PCW_QSPI_GRP_SINGLE_SS_ENABLE {1}
+        PCW_QSPI_GRP_SINGLE_SS_IO {MIO 1 .. 6}
+        PCW_QSPI_GRP_SS1_ENABLE {0}
+        PCW_QSPI_INTERNAL_HIGHADDRESS {0xFCFFFFFF}
+        PCW_QSPI_PERIPHERAL_CLKSRC {IO PLL}
+        PCW_QSPI_PERIPHERAL_ENABLE {1}
+        PCW_QSPI_PERIPHERAL_FREQMHZ {200}
+        PCW_QSPI_QSPI_IO {MIO 1 .. 6}
+        PCW_SD0_GRP_CD_ENABLE {1}
+        PCW_SD0_GRP_CD_IO {MIO 47}
+        PCW_SD0_GRP_POW_ENABLE {0}
+        PCW_SD0_GRP_WP_ENABLE {0}
+        PCW_SD0_PERIPHERAL_ENABLE {1}
+        PCW_SD0_SD0_IO {MIO 40 .. 45}
+        PCW_SD1_PERIPHERAL_ENABLE {0}
+        PCW_SDIO0_BASEADDR {0xE0100000}
+        PCW_SDIO0_HIGHADDR {0xE0100FFF}
+        PCW_SDIO_PERIPHERAL_CLKSRC {IO PLL}
+        PCW_SDIO_PERIPHERAL_FREQMHZ {50}
+        PCW_SDIO_PERIPHERAL_VALID {1}
+        PCW_SINGLE_QSPI_DATA_MODE {x4}
+        PCW_SMC_CYCLE_T0 {NA}
+        PCW_SMC_CYCLE_T1 {NA}
+        PCW_SMC_CYCLE_T2 {NA}
+        PCW_SMC_CYCLE_T3 {NA}
+        PCW_SMC_CYCLE_T4 {NA}
+        PCW_SMC_CYCLE_T5 {NA}
+        PCW_SMC_CYCLE_T6 {NA}
+        PCW_SMC_PERIPHERAL_CLKSRC {IO PLL}
+        PCW_SMC_PERIPHERAL_VALID {0}
+        PCW_SPI0_PERIPHERAL_ENABLE {0}
+        PCW_SPI1_PERIPHERAL_ENABLE {0}
+        PCW_SPI_PERIPHERAL_CLKSRC {IO PLL}
+        PCW_SPI_PERIPHERAL_VALID {0}
+        PCW_S_AXI_HP0_DATA_WIDTH {64}
+        PCW_S_AXI_HP0_FREQMHZ {10}
+        PCW_S_AXI_HP0_ID_WIDTH {6}
+        PCW_S_AXI_HP1_DATA_WIDTH {64}
+        PCW_S_AXI_HP1_FREQMHZ {10}
+        PCW_S_AXI_HP1_ID_WIDTH {6}
+        PCW_TPIU_PERIPHERAL_CLKSRC {External}
+        PCW_TRACE_INTERNAL_WIDTH {2}
+        PCW_TRACE_PERIPHERAL_ENABLE {0}
+        PCW_TTC0_CLK0_PERIPHERAL_CLKSRC {CPU_1X}
+        PCW_TTC0_CLK0_PERIPHERAL_DIVISOR0 {1}
+        PCW_TTC0_CLK1_PERIPHERAL_CLKSRC {CPU_1X}
+        PCW_TTC0_CLK1_PERIPHERAL_DIVISOR0 {1}
+        PCW_TTC0_CLK2_PERIPHERAL_CLKSRC {CPU_1X}
+        PCW_TTC0_CLK2_PERIPHERAL_DIVISOR0 {1}
+        PCW_TTC0_PERIPHERAL_ENABLE {0}
+        PCW_TTC1_CLK0_PERIPHERAL_CLKSRC {CPU_1X}
+        PCW_TTC1_CLK0_PERIPHERAL_DIVISOR0 {1}
+        PCW_TTC1_CLK1_PERIPHERAL_CLKSRC {CPU_1X}
+        PCW_TTC1_CLK1_PERIPHERAL_DIVISOR0 {1}
+        PCW_TTC1_CLK2_PERIPHERAL_CLKSRC {CPU_1X}
+        PCW_TTC1_CLK2_PERIPHERAL_DIVISOR0 {1}
+        PCW_TTC1_PERIPHERAL_ENABLE {0}
+        PCW_UART0_BASEADDR {0xE0000000}
+        PCW_UART0_BAUD_RATE {115200}
+        PCW_UART0_GRP_FULL_ENABLE {0}
+        PCW_UART0_HIGHADDR {0xE0000FFF}
+        PCW_UART0_PERIPHERAL_ENABLE {1}
+        PCW_UART0_UART0_IO {MIO 14 .. 15}
+        PCW_UART1_PERIPHERAL_ENABLE {0}
+        PCW_UART_PERIPHERAL_CLKSRC {IO PLL}
+        PCW_UART_PERIPHERAL_FREQMHZ {100}
+        PCW_UART_PERIPHERAL_VALID {1}
+        PCW_UIPARAM_ACT_DDR_FREQ_MHZ {525.000000}
+        PCW_UIPARAM_DDR_ADV_ENABLE {0}
+        PCW_UIPARAM_DDR_AL {0}
+        PCW_UIPARAM_DDR_BL {8}
+        PCW_UIPARAM_DDR_BOARD_DELAY0 {0.279}
+        PCW_UIPARAM_DDR_BOARD_DELAY1 {0.260}
+        PCW_UIPARAM_DDR_BOARD_DELAY2 {0.085}
+        PCW_UIPARAM_DDR_BOARD_DELAY3 {0.092}
+        PCW_UIPARAM_DDR_BUS_WIDTH {16 Bit}
+        PCW_UIPARAM_DDR_CLOCK_0_LENGTH_MM {27.95}
+        PCW_UIPARAM_DDR_CLOCK_0_PACKAGE_LENGTH {80.4535}
+        PCW_UIPARAM_DDR_CLOCK_0_PROPOGATION_DELAY {160}
+        PCW_UIPARAM_DDR_CLOCK_1_LENGTH_MM {27.95}
+        PCW_UIPARAM_DDR_CLOCK_1_PACKAGE_LENGTH {80.4535}
+        PCW_UIPARAM_DDR_CLOCK_1_PROPOGATION_DELAY {160}
+        PCW_UIPARAM_DDR_CLOCK_2_LENGTH_MM {0}
+        PCW_UIPARAM_DDR_CLOCK_2_PACKAGE_LENGTH {80.4535}
+        PCW_UIPARAM_DDR_CLOCK_2_PROPOGATION_DELAY {160}
+        PCW_UIPARAM_DDR_CLOCK_3_LENGTH_MM {0}
+        PCW_UIPARAM_DDR_CLOCK_3_PACKAGE_LENGTH {80.4535}
+        PCW_UIPARAM_DDR_CLOCK_3_PROPOGATION_DELAY {160}
+        PCW_UIPARAM_DDR_CLOCK_STOP_EN {0}
+        PCW_UIPARAM_DDR_DQS_0_LENGTH_MM {32.14}
+        PCW_UIPARAM_DDR_DQS_0_PACKAGE_LENGTH {105.056}
+        PCW_UIPARAM_DDR_DQS_0_PROPOGATION_DELAY {160}
+        PCW_UIPARAM_DDR_DQS_1_LENGTH_MM {31.12}
+        PCW_UIPARAM_DDR_DQS_1_PACKAGE_LENGTH {66.904}
+        PCW_UIPARAM_DDR_DQS_1_PROPOGATION_DELAY {160}
+        PCW_UIPARAM_DDR_DQS_2_LENGTH_MM {0}
+        PCW_UIPARAM_DDR_DQS_2_PACKAGE_LENGTH {89.1715}
+        PCW_UIPARAM_DDR_DQS_2_PROPOGATION_DELAY {160}
+        PCW_UIPARAM_DDR_DQS_3_LENGTH_MM {0}
+        PCW_UIPARAM_DDR_DQS_3_PACKAGE_LENGTH {113.63}
+        PCW_UIPARAM_DDR_DQS_3_PROPOGATION_DELAY {160}
+        PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 {-0.051}
+        PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_1 {-0.006}
+        PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_2 {-0.009}
+        PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_3 {-0.033}
+        PCW_UIPARAM_DDR_DQ_0_LENGTH_MM {32.2}
+        PCW_UIPARAM_DDR_DQ_0_PACKAGE_LENGTH {98.503}
+        PCW_UIPARAM_DDR_DQ_0_PROPOGATION_DELAY {160}
+        PCW_UIPARAM_DDR_DQ_1_LENGTH_MM {31.08}
+        PCW_UIPARAM_DDR_DQ_1_PACKAGE_LENGTH {68.5855}
+        PCW_UIPARAM_DDR_DQ_1_PROPOGATION_DELAY {160}
+        PCW_UIPARAM_DDR_DQ_2_LENGTH_MM {0}
+        PCW_UIPARAM_DDR_DQ_2_PACKAGE_LENGTH {90.295}
+        PCW_UIPARAM_DDR_DQ_2_PROPOGATION_DELAY {160}
+        PCW_UIPARAM_DDR_DQ_3_LENGTH_MM {0}
+        PCW_UIPARAM_DDR_DQ_3_PACKAGE_LENGTH {103.977}
+        PCW_UIPARAM_DDR_DQ_3_PROPOGATION_DELAY {160}
+        PCW_UIPARAM_DDR_ECC {Disabled}
+        PCW_UIPARAM_DDR_ENABLE {1}
+        PCW_UIPARAM_DDR_FREQ_MHZ {525}
+        PCW_UIPARAM_DDR_HIGH_TEMP {Normal (0-85)}
+        PCW_UIPARAM_DDR_MEMORY_TYPE {DDR 3}
+        PCW_UIPARAM_DDR_PARTNO {MT41J256M16 RE-125}
+        PCW_UIPARAM_DDR_TRAIN_DATA_EYE {1}
+        PCW_UIPARAM_DDR_TRAIN_READ_GATE {1}
+        PCW_UIPARAM_DDR_TRAIN_WRITE_LEVEL {1}
+        PCW_UIPARAM_DDR_USE_INTERNAL_VREF {0}
+        PCW_UIPARAM_GENERATE_SUMMARY {NA}
+        PCW_USB0_BASEADDR {0xE0102000}
+        PCW_USB0_HIGHADDR {0xE0102fff}
+        PCW_USB0_PERIPHERAL_ENABLE {1}
+        PCW_USB0_RESET_ENABLE {1}
+        PCW_USB0_RESET_IO {MIO 46}
+        PCW_USB0_USB0_IO {MIO 28 .. 39}
+        PCW_USB1_PERIPHERAL_ENABLE {0}
+        PCW_USB_RESET_ENABLE {1}
+        PCW_USB_RESET_POLARITY {Active Low}
+        PCW_USB_RESET_SELECT {Share reset pin}
+        PCW_USE_AXI_FABRIC_IDLE {0}
+        PCW_USE_AXI_NONSECURE {0}
+        PCW_USE_CORESIGHT {0}
+        PCW_USE_CROSS_TRIGGER {0}
+        PCW_USE_CR_FABRIC {1}
+        PCW_USE_DDR_BYPASS {0}
+        PCW_USE_DEBUG {0}
+        PCW_USE_DMA0 {0}
+        PCW_USE_DMA1 {0}
+        PCW_USE_DMA2 {0}
+        PCW_USE_DMA3 {0}
+        PCW_USE_EXPANDED_IOP {0}
+        PCW_USE_FABRIC_INTERRUPT {0}
+        PCW_USE_HIGH_OCM {0}
+        PCW_USE_M_AXI_GP0 {1}
+        PCW_USE_M_AXI_GP1 {0}
+        PCW_USE_PROC_EVENT_BUS {0}
+        PCW_USE_PS_SLCR_REGISTERS {0}
+        PCW_USE_S_AXI_ACP {0}
+        PCW_USE_S_AXI_GP0 {0}
+        PCW_USE_S_AXI_GP1 {0}
+        PCW_USE_S_AXI_HP0 {1}
+        PCW_USE_S_AXI_HP1 {1}
+        PCW_USE_S_AXI_HP2 {0}
+        PCW_USE_S_AXI_HP3 {0}
+        PCW_USE_TRACE {0}
+        PCW_VALUE_SILVERSION {3}
+        PCW_WDT_PERIPHERAL_CLKSRC {CPU_1X}
+        PCW_WDT_PERIPHERAL_DIVISOR0 {1}
+        PCW_WDT_PERIPHERAL_ENABLE {0}
+    }
+    # ★★ 2026-11-01（2026.x 迁移）：新 PS7 IP 把 MIO bank 电压拆成显式参数
+    #   （PCW_PRESET_BANK0/1_VOLTAGE）。**必须先设**：否则 MIO16-27 只接受 LVCMOS 3.3V
+    #   （PYNQ-Z2 的 bank1 是 1.8V）、ENET0 一串参数还会被当成 disabled 忽略。
+    #   旧版 IP（2023.2）没有这两个参数 -> catch 跳过，行为与原来完全一致。
+    foreach {_bk _bv} {PCW_PRESET_BANK0_VOLTAGE {LVCMOS 3.3V}                        PCW_PRESET_BANK1_VOLTAGE {LVCMOS 1.8V}} {
+        if {[catch {set_property CONFIG.$_bk $_bv $cell} _e]} {
+            puts "INFO: PS7 无 $_bk（旧版 IP），跳过"
+        } else {
+            puts "INFO: PS7 $_bk = $_bv"
+        }
+    }
+
+    # ★ 参数有**依赖顺序**（先开外设/电压，才能设它的 MIO/地址/时钟）。
+    #   照搬板卡 preset 的"多轮应用"：跑 3 轮，每轮把全部再设一遍；只在最后一轮
+    #   统计失败（前面的失败多半是"依赖还没打开"）。
+    set n_bad 0
+    for {set pass 1} {$pass <= 3} {incr pass} {
+        set bad {}
+        foreach {k v} $kv {
+            if {[catch {set_property CONFIG.$k $v $cell} e]} {
+                lappend bad $k
+            }
+        }
+        if {$pass < 3} {
+            puts "INFO: PS7 preset 第 $pass 轮：失败 [llength $bad] 个（继续下一轮）"
+        } else {
+            set n_bad [llength $bad]
+            puts "INFO: PS7 preset 第 $pass 轮：仍失败 $n_bad 个"
+            foreach k $bad {
+                puts "WARN: PS7 preset 最终没设上 $k"
+            }
+        }
+    }
+    puts "INFO: PS7 preset 应用完成（终态失败 $n_bad 个）"
+    # ★ 2026.2 迁移：PS7 IP 升版后参数集可能增删；默认只 WARN（与 2023.2 行为一致），
+    #   迁移测试时设 PS7_STRICT=1 -> 有任何参数没设上就**硬停**，把差异暴露出来，
+    #   别让"PS7 少配了几项"的 bit 悄悄流下去。
+    if {[info exists ::env(PS7_STRICT)] && $::env(PS7_STRICT) ne "0"
+            && $n_bad > 0} {
+        puts "ERROR: PS7_STRICT=1 且仍有 $n_bad 个参数没设上 —— 新版 Vivado/PS7 IP 的参数集变了"
+        puts "ERROR:   按上面的 WARN 列表核对：真正被删除的参数从 ps7_pynq_z2_preset.tcl 里去掉；"
+        puts "ERROR:   改名/新增的按新版手册补上。**不要带着缺失参数继续 build**。"
+        exit 1
+    }
+}

@@ -1,0 +1,24 @@
+
+****** xsim v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_map_detect/xsim_script.tcl
+# xsim {tb_map_detect} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+------------------------------------------------------------
+  med=132 (exp 132)
+  vhi=72 (exp 72)
+  red=21 (exp 21)
+  blue=115 (exp 115)
+  black=716 (exp 716)
+  frame_seq=1 ovf=0 busy=0
+>>> PASS map_detect_core v1（真实快照：计数对拍；候选见 tb_map_cc/tb_map_detect_axi）
+------------------------------------------------------------
+$finish called at time : 2676200 ns : File "D:/Desktop/PYNQ/pynq-magnetic-field-demo/vivado/ov5640_pynq/rtl/map_detect/tb_map_detect.v" Line 128
+exit
+INFO: [Common 17-206] Exiting xsim at Thu Oct 22 21:09:45 2026...

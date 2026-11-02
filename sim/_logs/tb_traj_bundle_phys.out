@@ -1,0 +1,38 @@
+
+****** xsim v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/tb_traj_bundle_phys/xsim_script.tcl
+# xsim {tb_traj_bundle_phys} -testplusarg CASE=phys -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+=== V3 并行轨迹束 自检开始（向量目录 sim/v3/phys/blk_tab.mem）===
+
+==== case sim/v3/phys/blk_tab.mem ====  x0=76800 y0=69120 steps=600 bounce=3 holes=2 side=0
+  扫完 17 路用了 240106 周期（100MHz 下 = 2401.1 us），轨迹点 4058 个
+  路  0  OK  res=2 终点(84451,9146) 步数=600
+  路  1  OK  res=2 终点(87084,10430) 步数=600
+  路  2  OK  res=2 终点(89700,12144) 步数=600
+  路  3  OK  res=2 终点(92868,12166) 步数=600
+  路  4  OK  res=2 终点(103500,4612) 步数=600
+  路  5  OK  res=2 终点(104506,3334) 步数=600
+  路  6  OK  res=2 终点(103905,13040) 步数=600
+  路  7  OK  res=2 终点(106911,24634) 步数=600
+  路  8  OK  res=2 终点(66790,69120) 步数=600
+  路  9  OK  res=2 终点(68572,69638) 步数=600
+  路 10  OK  res=2 终点(189230,47044) 步数=600
+  路 11  OK  res=2 终点(189420,50615) 步数=600
+  路 12  OK  res=2 终点(240979,77320) 步数=600
+  路 13  OK  res=2 终点(241205,4099) 步数=600
+  路 14  OK  res=2 终点(236959,5256) 步数=600
+  路 15  OK  res=2 终点(233325,74434) 步数=600
+  路 16  OK  res=2 终点(210450,53796) 步数=600
+
+>>> PASS：17 路结果与定点黄金模型逐位一致
+$finish called at time : 2401165 ns : File "D:/Desktop/PYNQ/pynq-magnetic-field-demo/vivado/ov5640_pynq/rtl/v3_bundle/tb_traj_bundle.v" Line 333
+exit
+INFO: [Common 17-206] Exiting xsim at Tue Oct 27 18:04:41 2026...

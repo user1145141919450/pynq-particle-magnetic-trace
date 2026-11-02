@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Desktop/PYNQ/pynq-magnetic-field-demo/vivado/ov5640_pynq/rtl/map_detect/map_detect_core.v" into library work
+INFO: [VRFC 10-311] analyzing module map_detect_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Desktop/PYNQ/pynq-magnetic-field-demo/vivado/ov5640_pynq/rtl/map_detect/map_cc.v" into library work
+INFO: [VRFC 10-311] analyzing module map_cc
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Desktop/PYNQ/pynq-magnetic-field-demo/vivado/ov5640_pynq/rtl/map_detect/tb_map_detect.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_map_detect

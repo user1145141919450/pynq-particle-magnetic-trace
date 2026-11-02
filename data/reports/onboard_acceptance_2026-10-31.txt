@@ -1,0 +1,26 @@
+=== 2026-10-31 上板验收摘录（bit db96e197, 2023.2）===
+--- load_bit / pl_probe ---
+[load] pl_probe rc=1：我们的 bit 不在 PL 里 -> 下 bit 正是它授权的动作
+[load] bit 文件 = /home/xilinx/wp/ov5640_m1a_wrapper.bit
+[load] 期望 md5 来自 边车文件 /home/xilinx/wp/ov5640_m1a_wrapper.bit.md5
+[load] bit md5 对账通过：db96e197f9f4cffb3c42061a9cda15a0
+[load] 下 bit：/home/xilinx/wp/ov5640_m1a_wrapper.bit ...
+[load] 已下载（0.9s）
+[load] === 下完复查 ===
+[load] 先 pl_probe（铁律：**下 bit 之前必须先问 PL 里现在是什么**）...
+[PL] fpga_manager state = operating（仅供参考：开机默认 bit 也是 operating）
+[PL] 我们的帧计数读到了：175 -> 181（0.4s）
+[PL] **我们的流水线正在跑** -> 千万别再下 bit（exit 0）
+[load] => 成功：PL 里现在是**我们的 bit**（pl_probe rc=0）
+--- frame_pump_bench ---
+  [OK] SSH 已通（第 1 次）
+[load] bit md5 对账通过：db96e197f9f4cffb3c42061a9cda15a0
+  [OK] bit 已就位
+PL 帧泵上板台架
+  [OK]   档① 1.25x 水平放大：逐像素一致 不符 0 / 921600
+      耗时 73.5 ms/帧
+  [OK]   档② 真实标定透视行表：逐像素一致 不符 0 / 921600
+      耗时 70.5 ms/帧
+通过 2 / 失败 0
+帧泵统计：{'n': 2, 'ms_avg': 72.0}
+   ② 耗时：v1=306 ms/帧；v2.1 目标 20~40 ms/帧

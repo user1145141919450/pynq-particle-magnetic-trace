@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="605" height="387" viewBox="0 0 1000 640" font-family="Microsoft YaHei, SimHei, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L9,3 L0,6 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L9,3 L0,6 z" fill="#1D4ED8"/>
+    </marker>
+    <marker id="arrowGray" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L9,3 L0,6 z" fill="#64748B"/>
+    </marker>
+    <style>
+      .panel { fill:#F8FAFC; stroke:#CBD5E1; stroke-width:1.2; }
+      .panel-pl { fill:#EFF6FF; stroke:#93C5FD; stroke-width:1.2; }
+      .panel-ps { fill:#FFFBEB; stroke:#FCD34D; stroke-width:1.2; }
+      .panel-out { fill:#F0FDF4; stroke:#86EFAC; stroke-width:1.2; }
+      .box { fill:#FFFFFF; stroke:#475569; stroke-width:1.2; }
+      .box-pl { fill:#DBEAFE; stroke:#1D4ED8; stroke-width:1.2; }
+      .box-ps { fill:#FEF3C7; stroke:#B45309; stroke-width:1.2; }
+      .box-out { fill:#DCFCE7; stroke:#15803D; stroke-width:1.2; }
+      .t { fill:#0F172A; font-size:17px; }
+      .tb { fill:#0F172A; font-size:20px; font-weight:700; }
+      .ts { fill:#334155; font-size:15px; }
+      .tg { fill:#475569; font-size:14px; }
+      .plabel { fill:#1E3A5F; font-size:18px; font-weight:700; }
+      .line { stroke:#334155; stroke-width:1.6; fill:none; marker-end:url(#arrow); }
+      .lineb { stroke:#1D4ED8; stroke-width:1.6; fill:none; stroke-dasharray:6 4; marker-end:url(#arrowBlue); }
+      .lineg { stroke:#64748B; stroke-width:1.5; fill:none; stroke-dasharray:5 4; marker-end:url(#arrowGray); }
+      .lbl { fill:#475569; font-size:13px; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="640" fill="#FFFFFF"/>
+  <text x="500" y="30" text-anchor="middle" font-size="24" font-weight="700" fill="#0F172A">基于 PYNQ 的粒子磁迹交互系统 · 系统框图</text>
+  <text x="500" y="54" text-anchor="middle" font-size="13" fill="#475569">PYNQ-Z2（Zynq-7020，xc7z020clg400-1） · PS + PL 异构</text>
+
+  <!-- 顶排：输入与采集 -->
+  <rect x="40" y="78" width="200" height="92" rx="8" class="box"/>
+  <text x="140" y="104" text-anchor="middle" class="tb">物理场景</text>
+  <text x="140" y="128" text-anchor="middle" class="ts">红/蓝球 · 黑条</text>
+  <text x="140" y="150" text-anchor="middle" class="ts">绿椭圆 · 黑球</text>
+
+  <line x1="240" y1="124" x2="270" y2="124" class="line"/>
+
+  <rect x="272" y="78" width="220" height="92" rx="8" class="box-pl"/>
+  <text x="382" y="102" text-anchor="middle" class="tb">OV5640 + 采集桥</text>
+  <text x="382" y="126" text-anchor="middle" class="ts">1024×720</text>
+  <text x="382" y="148" text-anchor="middle" class="ts">8×8 → 128×90</text>
+
+  <line x1="492" y1="124" x2="522" y2="124" class="line"/>
+
+  <rect x="524" y="78" width="200" height="92" rx="8" class="box-pl"/>
+  <text x="624" y="102" text-anchor="middle" class="tb">VDMA S2MM</text>
+  <text x="624" y="126" text-anchor="middle" class="ts">写入 PS DDR</text>
+  <text x="624" y="148" text-anchor="middle" class="ts">15 fps，errs=0</text>
+
+  <text x="748" y="108" class="tg">缩略图约 23 KB/帧；</text>
+  <text x="748" y="130" class="tg">原始 1024×720 帧</text>
+  <text x="748" y="152" class="tg">不整帧进 PS。</text>
+
+  <!-- 缩略图分发到 PL / PS -->
+  <polyline points="624,170 624,195 250,195 250,218" class="line"/>
+  <polyline points="624,195 624,218" class="line"/>
+  <text x="632" y="190" class="lbl">缩略图</text>
+
+  <!-- PL 面板 -->
+  <rect x="40" y="220" width="360" height="190" rx="10" class="panel-pl"/>
+  <text x="60" y="246" class="plabel">PL（FPGA）计算</text>
+  <text x="60" y="278" class="t">· V3 束：17 路逻辑射线 / 2 lane</text>
+  <text x="60" y="304" class="t">· 粒子引擎：16 粒 / 1 lane</text>
+  <text x="60" y="330" class="t">· PL 检测：掩码 / 形态学 / CCL</text>
+  <text x="60" y="356" class="t">· 画线 DDA / 帧泵（可选）</text>
+  <text x="60" y="386" class="tg">原则：像素/并行 → PL；规则/交互 → PS。</text>
+
+  <!-- PS 面板 -->
+  <rect x="520" y="220" width="400" height="190" rx="10" class="panel-ps"/>
+  <text x="540" y="246" class="plabel">PS（ARM Cortex-A9）</text>
+  <text x="540" y="278" class="t">· 球追踪、候选复判 classify</text>
+  <text x="540" y="304" class="t">· 10 局规则、计分、商店 / 道具</text>
+  <text x="540" y="330" class="t">· 改磁场三步确认、实体件摆放</text>
+  <text x="540" y="356" class="t">· 画面合成、HUD、状态同步</text>
+  <text x="540" y="382" class="t">· HDMI / 串口屏 / 手机网页</text>
+  <text x="540" y="402" class="tg">键鼠输入（P1 / P2）；规则与交互在 PS。</text>
+
+  <!-- PL <-> PS -->
+  <line x1="520" y1="345" x2="400" y2="345" class="lineg"/>
+  <text x="460" y="312" text-anchor="middle" class="lbl">AXI-Lite</text>
+  <text x="460" y="330" text-anchor="middle" class="lbl">控制 / 结果</text>
+
+  <!-- 底部左：地址与原则 -->
+  <rect x="40" y="440" width="360" height="120" rx="10" class="panel"/>
+  <text x="60" y="466" class="plabel">地址与分工</text>
+  <text x="60" y="492" class="tg">V3 0x4000_0000 · PE 0x4000_1000</text>
+  <text x="60" y="514" class="tg">检测 0x4000_2000 · 画线 0x43B3_0000</text>
+  <text x="60" y="536" class="tg">帧泵 0x43B4_0000 · 100 MHz</text>
+
+  <!-- 底部右：显示 -->
+  <rect x="520" y="440" width="400" height="120" rx="10" class="panel-out"/>
+  <text x="540" y="466" class="plabel">显示与反馈</text>
+  <text x="540" y="492" class="t">VDMA MM2S → v_tc → rgb2dvi → HDMI 720p</text>
+  <text x="540" y="516" class="tg">PS 叠加实拍/场区/轨迹/HUD；串口屏/手机同步。</text>
+  <text x="540" y="540" class="tg">MM2S DMACR = 0x0001_1089；rgb2dvi {R,B,G}</text>
+
+  <!-- PS -> 显示 -->
+  <line x1="740" y1="410" x2="740" y2="438" class="line"/>
+
+  <!-- 图例 -->
+  <line x1="60" y1="600" x2="100" y2="600" class="line"/>
+  <text x="108" y="604" class="tg">数据流</text>
+  <line x1="180" y1="600" x2="220" y2="600" class="lineb"/>
+  <text x="228" y="604" class="tg">只读抽头</text>
+  <text x="520" y="604" class="tg">实测数据见 docs/reports/；PL 与 PS 共用同一份场景状态。</text>
+</svg>
